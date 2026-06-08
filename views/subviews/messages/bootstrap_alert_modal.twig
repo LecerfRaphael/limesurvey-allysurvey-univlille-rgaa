@@ -1,0 +1,32 @@
+{#
+  Surcharge accessibilite de la modale d'alerte Bootstrap LimeSurvey.
+  Le theme parent fournit un bouton sans nom accessible et un lien href="#".
+#}
+<div id="bootstrap-alert-box-modal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="bootstrap-alert-box-modal-title"
+     aria-describedby="bootstrap-alert-box-modal-body"
+     inert
+     data-a11y-hidden-tabstops="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="bootstrap-alert-box-modal-title" class="modal-title">Message</h2>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Fermer"
+                        tabindex="-1"></button>
+            </div>
+            <div id="bootstrap-alert-box-modal-body" class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal"
+                        tabindex="-1">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>

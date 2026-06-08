@@ -1,0 +1,190 @@
+{
+  "bundle": "files/accessibilite.js",
+  "version": "2026-06-04-p3-maintenance-tests",
+  "limeSurveyCompatibility": "bundle unique conservé pour éviter les régressions de chargement dans les thèmes LimeSurvey/PJAX",
+  "modules": [
+    {
+      "id": "core-status-links",
+      "family": "Socle transversal",
+      "criteria": "RGAA 6, RGAA 7 / WCAG 2.4.4, 4.1.3",
+      "functions": [
+        "ensureA11yStatusRegions",
+        "announceA11y",
+        "clearA11yAnnouncements",
+        "enhanceBlankTargetLinks",
+        "enhanceVisibleLabelInAccessibleName",
+        "wireMaxLenDelegation",
+        "wireRelevanceHandlers"
+      ],
+      "test_refs": [
+        "AUTO-01",
+        "AUTO-02",
+        "MAN-01",
+        "MAN-02"
+      ]
+    },
+    {
+      "id": "structure-required",
+      "family": "Structure + langue des passages + champs obligatoires",
+      "criteria": "RGAA 8, RGAA 9, RGAA 11 / WCAG 3.1.2, 1.3.1, 3.3.1, 3.3.2",
+      "functions": [
+        "initPassageLanguageHints",
+        "initDivToFieldset",
+        "removeAlertRoleOnQuestionHelp",
+        "removeRequiredFromHiddenInputs",
+        "updateRequiredForInputsSelectsAndRadios",
+        "validateRadioRequirementsInTable",
+        "addRequiredToTextLongMandatory",
+        "updateRequiredForTextShortQuestions",
+        "applyRequiredRadiosFieldsets",
+        "updateRequiredAttributes",
+        "updateRadioRequiredAttributes"
+      ],
+      "test_refs": [
+        "AUTO-03",
+        "AUTO-04",
+        "MAN-03",
+        "MAN-04",
+        "MAN-25"
+      ]
+    },
+    {
+      "id": "personal-data-autocomplete",
+      "family": "Objectif des champs utilisateur",
+      "criteria": "WCAG 1.3.5 AA",
+      "functions": [
+        "initAutoTypes",
+        "enhanceStandardAutocomplete",
+        "explicitAutocompleteToken",
+        "normalizeAutocompleteToken"
+      ],
+      "test_refs": [
+        "AUTO-05",
+        "MAN-05"
+      ]
+    },
+    {
+      "id": "question-families",
+      "family": "Types de questions standard",
+      "criteria": "RGAA 7, RGAA 11 / WCAG 2.1.1, 3.3.2, 4.1.2",
+      "functions": [
+        "initDateTriplets",
+        "initOtherRadios",
+        "initOtherCheckboxes",
+        "initDisableOtherOnListRadio",
+        "initOtherAutreFocus",
+        "initForceListWithComment",
+        "initMultipleOptComments",
+        "initChoiceFocusStyles",
+        "initUploadAccessibility",
+        "initSliderAccessibility",
+        "initEquationAccessibility"
+      ],
+      "test_refs": [
+        "AUTO-06",
+        "MAN-06",
+        "MAN-07",
+        "MAN-08",
+        "MAN-17",
+        "MAN-18"
+      ]
+    },
+    {
+      "id": "arrays-tables",
+      "family": "Tableaux et matrices",
+      "criteria": "RGAA 5 / WCAG 1.3.1, 1.3.2",
+      "functions": [
+        "enhanceArrayTableSemantics",
+        "buildTableGrid",
+        "parseSpan",
+        "hasFocusableContent",
+        "removeMatrixCellTabStops",
+        "setArrayDescribedByTokens"
+      ],
+      "test_refs": [
+        "AUTO-07",
+        "MAN-09",
+        "MAN-10"
+      ]
+    },
+    {
+      "id": "reflow-focus-selects",
+      "family": "Reflow, focus, select",
+      "criteria": "RGAA 10 / WCAG 1.4.4, 1.4.10, 1.4.12, 2.4.7",
+      "functions": [
+        "initReflowZoomSupport",
+        "hideNativePickers",
+        "forceNativeSelectAccessibility",
+        "initBootstrapSelectKeyboardFix",
+        "initAriaLiveSubmitMessage",
+        "initBootstrapAlertModalAriaLive"
+      ],
+      "test_refs": [
+        "AUTO-08",
+        "MAN-11",
+        "MAN-12",
+        "MAN-13",
+        "MAN-21",
+        "MAN-22",
+        "MAN-24"
+      ]
+    },
+    {
+      "id": "ranking",
+      "family": "Question classement",
+      "criteria": "RGAA 7, RGAA 11 / WCAG 2.1.1, 4.1.2",
+      "functions": [
+        "initRankingQuestionsA11y"
+      ],
+      "test_refs": [
+        "AUTO-09",
+        "MAN-14"
+      ]
+    },
+    {
+      "id": "session-timeout",
+      "family": "Avertissement de session",
+      "criteria": "RGAA 13 / WCAG 2.2.1",
+      "functions": [
+        "initSessionTimeoutWarning"
+      ],
+      "test_refs": [
+        "AUTO-10",
+        "MAN-15",
+        "MAN-23"
+      ]
+    },
+    {
+      "id": "static-result-pages",
+      "family": "Pages hors questionnaire",
+      "criteria": "RGAA 13 / WCAG 1.4.10",
+      "functions": [
+        "initStaticResultPagesAccessibility"
+      ],
+      "test_refs": [
+        "AUTO-11",
+        "MAN-19",
+        "MAN-20"
+      ]
+    },
+    {
+      "id": "observers-validation",
+      "family": "PJAX, observers et validation",
+      "criteria": "RGAA 7, RGAA 11 / WCAG 3.3.1, 3.3.3, 4.1.2, 4.1.3",
+      "functions": [
+        "initRequiredCleanupObservers",
+        "initRequiredObserver",
+        "initTextLongShortRequiredObserver",
+        "initListRadioRequiredObserver",
+        "initRowRequiredObservers",
+        "initUnhideRelevantWatcher",
+        "initSequentialValidation"
+      ],
+      "test_refs": [
+        "AUTO-10",
+        "MAN-15",
+        "MAN-16"
+      ]
+    }
+  ]
+}

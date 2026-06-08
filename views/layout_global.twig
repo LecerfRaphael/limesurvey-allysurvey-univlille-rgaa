@@ -1,0 +1,417 @@
+{#
+    LimeSurvey
+    Copyright (C) 2007-2017 The LimeSurvey Project Team / Louis Gac
+    All rights reserved.
+    License: GNU/GPL License v2 or later, see LICENSE.php
+    LimeSurvey is free software. This version may have been modified pursuant
+    to the GNU General Public License, and as distributed it includes or
+    is derivative of works licensed under the GNU General Public License or
+    other free or open source software licenses.
+    See COPYRIGHT.php for copyright notices and details.
+
+    (¯`·._.·(¯`·._.· Global Layout  ·._.·´¯)·._.·´¯)
+
+    This is the global layout that will be used to displayed most pages (less the error page)
+    If you're creating your own template, remember there is no obligation to respect the current file flow of this template.
+    This is different from the old LimeSurvey template engine, where you had to provide every one of the pstpl files.
+    Here, you must have a file called main_layout.twig (called from SurveyRuntimeHelper::run() ).
+    Other than that, you're free to organize your files and inclusions as you want.
+
+
+
+    (¯`·._.·(¯`·._.· Bootstrap ·._.·´¯)·._.·´¯)
+
+    LimeSurvey uses Bootstrap.
+    See: https://getbootstrap.com
+
+    This template is an instance of Bootswatch Theme Flatly.
+    See: https://bootswatch.com/
+
+
+
+    (¯`·._.·(¯`·._.· Twig Engine  ·._.·´¯)·._.·´¯)
+
+    The template engine uses Twig.
+    See: http://twig.sensiolabs.org/
+
+    The main variable is aSurveyInfo. It's an array containing the main information about the survey.
+    aSurveyInfo also contains other needed arrays, such as aNavigator, or aQuestionGroups (which contain aQuestions), etc.
+
+    If you want to see what is availabe in aSurveyInfo, turn debug mode on in application/config.php, and copy the following line to the end of the <body> element below:
+    {{ dump(aSurveyInfo) }}
+
+    To echo a variable, just insert                      : {{ variable }}
+    To translate a string, just insert                   : {{gT( string )}}
+
+    NOTE: aSurveyInfo should be cleaned to remove the unnecessary data.
+
+
+    (¯`·._.·(¯`·._.· Twig Engine: advanced  ·._.·´¯)·._.·´¯)
+
+    For security reason, Twig is in a sandBox.
+    About sandBox, see: http://twig.sensiolabs.org/doc/2.x/api.html#sandbox-extension
+
+    Available functions/Object Methods are defined in internal.php: components => twigRenderer
+    Eg:
+         Functions : 'include', 'dump', 'flatEllipsizeText', 'getLanguageData', 'array_flip', 'array_intersect_key', 'registerPublicCssFile', 'getAllQuestionClasses', 'getShowqnumcode', 'intval'
+
+         Methods   :
+                    - CHtml::textfield() (and: form, link, emailField, beginForm, endForm, dropDownList,htmlButton)
+                    - Survey::getAllLanguages()
+                    - LSHttpRequest::getParam()
+
+    If you need to add simple functions or static methods, just add them to internal.php.
+    If you need to add complex process, use application/core/LS_Twig_Extension.php (more help/comments there)
+
+
+    NOTE: Feel free to ask for functions, variables, etc, that you feel are missing - https://bugs.limesurvey.org/my_view_page.php
+#}
+
+<!DOCTYPE html>
+<html lang="{{ aSurveyInfo.languagecode }}" dir="{{ aSurveyInfo.dir }}" class="{{ aSurveyInfo.languagecode }} dir-{{ aSurveyInfo.dir }} {{ aSurveyInfo.class.html }}" {{ aSurveyInfo.attr.html }}>
+    {% block head %}
+    {# Headers, metadata, etc #}
+    {{ include('./subviews/header/head.twig') }}
+    {% endblock %}
+    <body class=" fruity {{ aSurveyInfo.class.body }} font-{{  aSurveyInfo.options.font }} lang-{{aSurveyInfo.languagecode}} {{aSurveyInfo.surveyformat}} {% if( aSurveyInfo.options.brandlogo == "on") %}brand-logo{%endif%}" {{ aSurveyInfo.attr.body }} >
+    
+    <nav class="skip-links" aria-label="Liens d’évitement">
+      <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+      <a href="#a11y-toggle" class="skip-link">Aller aux options d’accessibilité</a>
+    </nav>
+     
+        {# Notice if emcache is on or off, used by tests. #}
+        {% if aSurveyInfo.emcache %}
+            <span style="display: none;" id="__emcache_debug" value="on"></span>
+        {% else %}
+            <span style="display: none;" id="__emcache_debug" value="off"></span>
+        {% endif %}
+
+        
+        <header role="banner">
+
+            <div id="{{ aSurveyInfo.id.dynamicreload }}">
+            {% block body %}
+
+                {# Bootstrap Navigation Bar: the top menu #}
+                {% block nav_bar %}
+                    {{ include('./subviews/header/nav_bar.twig') }}
+                {% endblock %}
+
+               {# Barre accessibilité #}
+                <div class="a11y-toolbar" id="a11y-toolbar" data-a11y-toolbar>
+                  <button
+                      id="a11y-toggle"
+                      class="a11y-toggle a11y-toggle--icon"
+                      type="button"
+                      aria-expanded="false"
+                      aria-controls="a11y-panel"
+                      aria-label="Ouvrir les options d’accessibilité"
+                    >
+                    <span class="a11y-toggle__icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <circle cx="12" cy="5" r="2.2" fill="currentColor"></circle>
+                        <path
+                          d="M12 8.2v4.1m0 0 3.8-1.8m-3.8 1.8-3.8-1.8M12 12.3l-2.2 6.2m2.2-6.2 2.2 6.2"
+                          stroke="currentColor"
+                          stroke-width="1.9"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>
+                      </svg>
+                    </span>
+                  </button>
+                
+                  <aside
+                      id="a11y-panel"
+                      class="a11y-panel"
+                      aria-labelledby="a11y-panel-title"
+                      role="region"
+                      inert
+                      data-a11y-hidden-tabstops="true"
+                    >
+                    <div class="a11y-panel__header">
+                      <div class="a11y-panel__titlewrap">
+                        <span class="a11y-panel__badge" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="5" r="2.2" fill="currentColor"></circle>
+                            <path
+                              d="M12 8.2v4.1m0 0 3.8-1.8m-3.8 1.8-3.8-1.8M12 12.3l-2.2 6.2m2.2-6.2 2.2 6.2"
+                              stroke="currentColor"
+                              stroke-width="1.9"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></path>
+                          </svg>
+                        </span>
+                
+                        <div>
+                          <h2 id="a11y-panel-title" class="a11y-panel__title">Confort de lecture</h2>
+                          <p class="a11y-panel__subtitle">Personnalisez l’affichage selon vos besoins</p>
+                        </div>
+                      </div>
+                
+                      <button
+                        type="button"
+                        class="a11y-close"
+                        data-a11y-close
+                        tabindex="-1"
+                        aria-label="Fermer les options d’accessibilité"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                      </button>
+                    </div>
+                
+                    <div class="a11y-panel__body">
+                
+                      <section class="a11y-section" aria-labelledby="a11y-title-textsize">
+                        <div class="a11y-section__head">
+                          <span class="a11y-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                              <path
+                                d="M5 18 9 8h.2L13 18m-6.1-2.7h4.2M14 18l3.2-10H19L22 18m-6-2.7h4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              ></path>
+                            </svg>
+                          </span>
+                          <div>
+                            <h3 id="a11y-title-textsize" class="a11y-section__title">Taille du texte</h3>
+                            <p class="a11y-section__desc">Augmenter ou réduire la lecture</p>
+                          </div>
+                        </div>
+                
+                        <div class="a11y-inline-controls">
+                          <button
+                            type="button"
+                            class="a11y-btn"
+                            data-action="decrease-text"
+                            tabindex="-1"
+                            aria-label="A− - Réduire la taille du texte"
+                          >
+                            A−
+                          </button>
+                
+                          <div
+                            class="a11y-value"
+                            data-a11y-font-label
+                          >
+                            100%
+                          </div>
+                
+                          <button
+                            type="button"
+                            class="a11y-btn"
+                            data-action="increase-text"
+                            tabindex="-1"
+                            aria-label="A+ - Augmenter la taille du texte"
+                          >
+                            A+
+                          </button>
+                        </div>
+                      </section>
+                
+                      <section class="a11y-section" aria-labelledby="a11y-title-display">
+                        <div class="a11y-section__head">
+                          <span class="a11y-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                              <path
+                                d="M3 12c2.6-4.2 5.7-6.3 9-6.3S18.4 7.8 21 12c-2.6 4.2-5.7 6.3-9 6.3S5.6 16.2 3 12Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                              ></path>
+                              <circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.8"></circle>
+                            </svg>
+                          </span>
+                          <div>
+                            <h3 id="a11y-title-display" class="a11y-section__title">Affichage</h3>
+                            <p class="a11y-section__desc">Réglages visuels rapides</p>
+                          </div>
+                        </div>
+                
+                        <div class="a11y-toggle-grid">
+                          <button type="button" class="a11y-option" data-action="toggle-contrast" aria-pressed="false" tabindex="-1">
+                            <span class="a11y-option__icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M12 3a9 9 0 1 0 0 18V3Z" fill="currentColor"></path>
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"></circle>
+                              </svg>
+                            </span>
+                            <span class="a11y-option__text">
+                              <strong>Contraste élevé</strong>
+                              <small>Renforce les contrastes</small>
+                            </span>
+                          </button>
+                
+                          <button type="button" class="a11y-option" data-action="toggle-dyslexia" aria-pressed="false" tabindex="-1">
+                            <span class="a11y-option__icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path
+                                  d="M6 6v12m0 0h8.2a3.8 3.8 0 0 0 0-7.6H6m0-4.4h7"
+                                  stroke="currentColor"
+                                  stroke-width="1.8"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>
+                              </svg>
+                            </span>
+                            <span class="a11y-option__text">
+                              <strong>Mode dyslexie</strong>
+                              <small>Police plus lisible</small>
+                            </span>
+                          </button>
+
+                          <button type="button" class="a11y-option" data-action="toggle-luciole" aria-pressed="false" tabindex="-1">
+                            <span class="a11y-option__icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path
+                                  d="M5 18V6h7.2a3.2 3.2 0 0 1 0 6.4H5m9.2 5.6H19"
+                                  stroke="currentColor"
+                                  stroke-width="1.8"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>
+                                <path
+                                  d="M16.8 13.8 19 18"
+                                  stroke="currentColor"
+                                  stroke-width="1.8"
+                                  stroke-linecap="round"
+                                ></path>
+                              </svg>
+                            </span>
+                            <span class="a11y-option__text">
+                              <strong>Police Luciole</strong>
+                              <small>Police pour les malvoyants</small>
+                            </span>
+                          </button>
+                
+                          <button type="button" class="a11y-option" data-action="toggle-grayscale" aria-pressed="false" tabindex="-1">
+                            <span class="a11y-option__icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <rect x="4" y="6" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="1.8"></rect>
+                                <path d="M9 6v12M15 6v12" stroke="currentColor" stroke-width="1.4"></path>
+                              </svg>
+                            </span>
+                            <span class="a11y-option__text">
+                              <strong>Noir et blanc</strong>
+                              <small>Réduit les distractions visuelles</small>
+                            </span>
+                          </button>
+                
+                          <button type="button" class="a11y-option" data-action="toggle-spacing" aria-pressed="false" tabindex="-1">
+                            <span class="a11y-option__icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M6 7h12M6 12h12M6 17h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+                                <path
+                                  d="M3.5 4.5v5m0 0-1.5-1.5M3.5 9.5 5 8m15.5 5v5m0 0-1.5-1.5M20.5 18 22 16.5"
+                                  stroke="currentColor"
+                                  stroke-width="1.5"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                ></path>
+                              </svg>
+                            </span>
+                            <span class="a11y-option__text">
+                              <strong>Espacement augmenté</strong>
+                              <small>Plus d’air entre les lignes</small>
+                            </span>
+                          </button>
+                        </div>
+                      </section>
+                
+                      <section class="a11y-section" aria-labelledby="a11y-title-reset">
+                        <div class="a11y-section__head">
+                          <span class="a11y-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                              <path
+                                d="M4 12a8 8 0 1 0 2.3-5.7M4 4v4h4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              ></path>
+                            </svg>
+                          </span>
+                          <div>
+                            <h3 id="a11y-title-reset" class="a11y-section__title">Réinitialisation</h3>
+                            <p class="a11y-section__desc">Revenir à l’affichage par défaut</p>
+                          </div>
+                        </div>
+                
+                        <button type="button" class="a11y-btn a11y-btn--primary" data-action="reset" tabindex="-1">
+                          Réinitialiser les réglages
+                        </button>
+                      </section>
+                
+                    </div>
+                  </aside>
+                </div>
+                {# Top Container: in this template, it contains only  #}
+                {% block progress %}
+                    {{ include('./subviews/header/progress_bar.twig') }}
+                {% endblock %}
+        </header>  
+        <main id="main-content" role="main" tabindex="-1">
+
+
+                <!-- Outer Frame Container -->
+                {% block content %}
+                    {#
+                        Content depends on the action (survey, questions, register, assesments, submit, etc)
+                        Action are in ./subviews/content/
+                    #}
+                    {% set sViewContent =  './subviews/content/' ~ aSurveyInfo.include_content ~ '.twig' %}
+                    {% include './subviews/content/outerframe.twig' with {'include_content': sViewContent } %}
+                {% endblock %}
+
+                {# Bootstrap alert modal #}
+                {{ include('./subviews/messages/bootstrap_alert_modal.twig') }}
+
+                {# Basic ThemeScript options  #}
+                {{ registerScript("BasicThemeScripts", "
+                if(window.basicThemeScripts === undefined){ 
+                    window.basicThemeScripts = new ThemeScripts(); 
+                } 
+                basicThemeScripts.initGlobal(); 
+                ", "POS_END") }}
+
+            {% endblock %}
+
+        </main>
+        {% block footer %}
+            {{ include('./subviews/footer/footer.twig') }}
+        {% endblock %}
+        {% block pjaxend %}
+            <div id="bottomScripts" class="script-container">
+                <###end###>
+            </div>
+        {% endblock %}   
+
+        {% block themescripts %}
+            <script>
+                window.basicThemeScripts.init();
+            </script>
+        {% endblock %}
+
+<footer role="contentinfo">
+  <p style="text-align:center;">
+    <a href="https://www.univ-lille.fr" target="_blank" rel="noopener noreferrer" aria-label="Université de Lille - site officiel, nouvelle fenêtre">
+      <img class="mr-3" alt="Université de Lille" src="https://identite.univ-lille.fr/fileadmin/user_upload/identite/Images/Logo.sans.baseline-Horizontal-RVB-Blanc.svg" style="
+filter: invert(1);" width="85">
+    </a>
+    © Université de Lille - 
+    <a href="https://enquetes-etablissement.univ-lille.fr/support-videos" target="_blank" rel="noopener noreferrer">
+      Utilisation &amp; support<span class="sr-only"> (nouvelle fenêtre)</span>
+    </a><br />
+    Notre système de formulaire a été optimisé, le 2 juin 2026, pour respecter les règles de l'accessibilité numérique (RGAA 4.1). 
+    Si toutefois vous rencontrez des soucis, des points de blocage, n'hésitez pas à nous contacter : 
+    <a href="mailto:support-limesurvey@univ-lille.fr">support-limesurvey@univ-lille.fr</a>
+  </p>
+</footer>
+{{ registerScriptFile(templateResourceUrl('files/accessibilite.js') ~ '?v=2026-06-04-p3-maintenance', 'POS_END') }}
+</body>
+</html>

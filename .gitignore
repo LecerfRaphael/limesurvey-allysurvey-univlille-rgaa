@@ -1,0 +1,24 @@
+# Système
+.DS_Store
+Thumbs.db
+
+# Archives et sauvegardes
+*.zip
+*.bak
+*.old
+*.tmp
+*.log
+
+# Éditeurs
+.vscode/
+.idea/
+
+# Environnement local
+.env
+node_modules/
+
+# Dossiers locaux à ne pas publier
+exports/
+audit-local/
+captures-locales/
+private/

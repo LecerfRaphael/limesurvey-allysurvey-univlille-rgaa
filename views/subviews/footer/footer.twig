@@ -1,0 +1,379 @@
+<div id="ls-a11y-status"
+     class="sr-only visually-hidden"
+     role="status"
+     aria-live="polite"
+     aria-atomic="true"></div>
+<div id="ls-a11y-alert"
+     class="sr-only visually-hidden"
+     role="alert"
+     aria-live="assertive"
+     aria-atomic="true"></div>
+<script>
+(function (window, document) {
+  "use strict";
+
+  if (window.__LS_A11Y_STATUS_MANAGER_READY__) return;
+  window.__LS_A11Y_STATUS_MANAGER_READY__ = true;
+
+  var lastMessage = "";
+  var lastSeverity = "";
+  var lastTime = 0;
+  var clearTimer = null;
+
+  function ensureRegion(id, role, live) {
+    var region = document.getElementById(id);
+    if (!region) {
+      region = document.createElement("div");
+      region.id = id;
+      region.className = "sr-only visually-hidden";
+      (document.body || document.documentElement).appendChild(region);
+    }
+
+    region.setAttribute("role", role);
+    region.setAttribute("aria-live", live);
+    region.setAttribute("aria-atomic", "true");
+    region.classList.add("sr-only", "visually-hidden");
+
+    return region;
+  }
+
+  function getRegions() {
+    return {
+      status: ensureRegion("ls-a11y-status", "status", "polite"),
+      alert: ensureRegion("ls-a11y-alert", "alert", "assertive")
+    };
+  }
+
+  window.LSA11yClearStatus = function () {
+    var regions = getRegions();
+    regions.status.textContent = "";
+    regions.alert.textContent = "";
+    window.clearTimeout(clearTimer);
+  };
+
+  window.LSA11yAnnounce = function (message, severity, options) {
+    message = String(message || "").replace(/\s+/g, " ").trim();
+    if (!message) return;
+
+    options = options || {};
+    severity = /^(alert|error|assertive)$/i.test(severity || "") ?"alert" : "status";
+
+    var now = Date.now();
+    var dedupeKey = options.dedupeKey || message;
+    if (dedupeKey === lastMessage && severity === lastSeverity && now - lastTime < 1200) {
+      return;
+    }
+
+    lastMessage = dedupeKey;
+    lastSeverity = severity;
+    lastTime = now;
+
+    var regions = getRegions();
+    var target = severity === "alert" ?regions.alert : regions.status;
+    var other = severity === "alert" ?regions.status : regions.alert;
+
+    window.clearTimeout(clearTimer);
+    target.textContent = "";
+    other.textContent = "";
+
+    window.setTimeout(function () {
+      target.textContent = message;
+    }, 30);
+
+    if (!options.persist) {
+      clearTimer = window.setTimeout(function () {
+        target.textContent = "";
+      }, severity === "alert" ?7000 : 4000);
+    }
+  };
+})(window, document);
+</script>
+<script>
+(function (window, document) {
+  "use strict";
+
+  if (window.__LS_A11Y_TOOLBAR_IDEMPOTENT_BOUND__) return;
+  window.__LS_A11Y_TOOLBAR_IDEMPOTENT_BOUND__ = true;
+
+  const STORAGE_KEY = "ls_a11y_settings_v3";
+
+  const state = {
+    fontPercent: 100,
+    contrast: false,
+    dyslexia: false,
+    luciole: false,
+    grayscale: false,
+    spacing: false
+  };
+
+  function getNodes() {
+    const toolbar = document.querySelector("[data-a11y-toolbar]");
+    return {
+      body: document.body,
+      toolbar: toolbar,
+      toggle: document.getElementById("a11y-toggle"),
+      panel: document.getElementById("a11y-panel"),
+      closeBtn: toolbar ?toolbar.querySelector("[data-a11y-close]") : null,
+      fontLabel: toolbar ?toolbar.querySelector("[data-a11y-font-label]") : null
+    };
+  }
+
+  function saveState() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function announceToolbarChange(message) {
+    if (typeof window.LSA11yAnnounce === "function") {
+      window.LSA11yAnnounce(message, "status", { dedupeKey: "toolbar:" + message });
+    }
+  }
+
+  function actionMessage(action) {
+    switch (action) {
+      case "increase-text":
+      case "decrease-text":
+        return "Taille du texte : " + state.fontPercent + " %.";
+      case "toggle-contrast":
+        return state.contrast ?"Contraste renforcé activé." : "Contraste renforcé désactivé.";
+      case "toggle-dyslexia":
+        return state.dyslexia ?"Police adaptée à la dyslexie activée." : "Police adaptée à la dyslexie désactivée.";
+      case "toggle-luciole":
+        return state.luciole ?"Police Luciole activée." : "Police Luciole désactivée.";
+      case "toggle-grayscale":
+        return state.grayscale ?"Mode noir et blanc activé." : "Mode noir et blanc désactivé.";
+      case "toggle-spacing":
+        return state.spacing ?"Espacement du texte activé." : "Espacement du texte désactivé.";
+      case "reset":
+        return "Réglages d’accessibilité réinitialisés.";
+      default:
+        return "Réglage d’accessibilité mis à jour.";
+    }
+  }
+
+  function loadState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      Object.assign(state, saved);
+    } catch (e) {}
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function setPressed(toolbar, action, value) {
+    if (!toolbar) return;
+    const btn = toolbar.querySelector('[data-action="' + action + '"]');
+    if (!btn) return;
+    btn.setAttribute("aria-pressed", value ?"true" : "false");
+    btn.classList.toggle("is-active", !!value);
+  }
+
+  function getPanelFocusable(panel) {
+    if (!panel) return [];
+    return Array.prototype.slice.call(panel.querySelectorAll(
+      'a[href], area[href], button, input, select, textarea, iframe, object, embed, [contenteditable="true"], [tabindex]'
+    )).filter(function (node) {
+      return !node.disabled && node.getAttribute("aria-hidden") !== "true";
+    });
+  }
+
+  function setPanelFocusability(panel, enabled) {
+    getPanelFocusable(panel).forEach(function (node) {
+      if (enabled) {
+        if (node.hasAttribute("data-a11y-saved-tabindex")) {
+          const saved = node.getAttribute("data-a11y-saved-tabindex");
+          node.removeAttribute("data-a11y-saved-tabindex");
+          if (saved === "") node.removeAttribute("tabindex");
+          else node.setAttribute("tabindex", saved);
+        } else if (panel.getAttribute("data-a11y-hidden-tabstops") === "true" && node.getAttribute("tabindex") === "-1") {
+          node.removeAttribute("tabindex");
+        }
+        return;
+      }
+
+      if (!node.hasAttribute("data-a11y-saved-tabindex")) {
+        node.setAttribute("data-a11y-saved-tabindex", node.hasAttribute("tabindex") ?node.getAttribute("tabindex") : "");
+      }
+      node.setAttribute("tabindex", "-1");
+    });
+  }
+
+  function applyState() {
+    const nodes = getNodes();
+    if (!nodes.body) return;
+
+    nodes.body.style.fontSize = state.fontPercent + "%";
+    if (nodes.fontLabel) nodes.fontLabel.textContent = state.fontPercent + "%";
+
+    nodes.body.classList.toggle("a11y-contrast", state.contrast);
+    nodes.body.classList.toggle("a11y-dyslexia", state.dyslexia);
+    nodes.body.classList.toggle("a11y-luciole", state.luciole);
+    nodes.body.classList.toggle("a11y-grayscale", state.grayscale);
+    nodes.body.classList.toggle("a11y-spacing", state.spacing);
+
+    setPressed(nodes.toolbar, "toggle-contrast", state.contrast);
+    setPressed(nodes.toolbar, "toggle-dyslexia", state.dyslexia);
+    setPressed(nodes.toolbar, "toggle-luciole", state.luciole);
+    setPressed(nodes.toolbar, "toggle-grayscale", state.grayscale);
+    setPressed(nodes.toolbar, "toggle-spacing", state.spacing);
+  }
+
+  function openPanel() {
+    const nodes = getNodes();
+    if (!nodes.toggle || !nodes.panel) return;
+    nodes.panel.classList.add("is-open");
+    nodes.panel.removeAttribute("inert");
+    setPanelFocusability(nodes.panel, true);
+    nodes.toggle.setAttribute("aria-expanded", "true");
+    // Panneau non modal : pas de déplacement automatique du focus et pas de piège clavier.
+  }
+
+  function closePanel(returnFocus) {
+    const nodes = getNodes();
+    if (!nodes.toggle || !nodes.panel) return;
+    nodes.panel.classList.remove("is-open");
+    setPanelFocusability(nodes.panel, false);
+    nodes.panel.setAttribute("inert", "");
+    nodes.toggle.setAttribute("aria-expanded", "false");
+
+    if (returnFocus) {
+      nodes.toggle.focus();
+    }
+  }
+
+  function togglePanel() {
+    const nodes = getNodes();
+    if (!nodes.panel) return;
+    if (nodes.panel.classList.contains("is-open")) closePanel(true);
+    else openPanel();
+  }
+
+  function handleDocumentClick(e) {
+    const nodes = getNodes();
+    if (!nodes.toolbar || !nodes.panel) return;
+
+    const toggle = e.target.closest && e.target.closest("#a11y-toggle");
+    const close = e.target.closest && e.target.closest("[data-a11y-close]");
+    const actionButton = e.target.closest && e.target.closest("[data-action]");
+
+    if (toggle) {
+      e.preventDefault();
+      e.stopPropagation();
+      togglePanel();
+      return;
+    }
+
+    if (close) {
+      e.preventDefault();
+      e.stopPropagation();
+      closePanel(true);
+      return;
+    }
+
+    if (actionButton && nodes.toolbar.contains(actionButton)) {
+      const action = actionButton.getAttribute("data-action");
+      switch (action) {
+        case "increase-text":
+          state.fontPercent = clamp(state.fontPercent + 10, 80, 160);
+          break;
+        case "decrease-text":
+          state.fontPercent = clamp(state.fontPercent - 10, 80, 160);
+          break;
+        case "toggle-contrast":
+          state.contrast = !state.contrast;
+          break;
+        case "toggle-dyslexia":
+          state.dyslexia = !state.dyslexia;
+          if (state.dyslexia) state.luciole = false;
+          break;
+        case "toggle-luciole":
+          state.luciole = !state.luciole;
+          if (state.luciole) state.dyslexia = false;
+          break;
+        case "toggle-grayscale":
+          state.grayscale = !state.grayscale;
+          break;
+        case "toggle-spacing":
+          state.spacing = !state.spacing;
+          break;
+        case "reset":
+          state.fontPercent = 100;
+          state.contrast = false;
+          state.dyslexia = false;
+          state.luciole = false;
+          state.grayscale = false;
+          state.spacing = false;
+          break;
+      }
+
+      applyState();
+      saveState();
+      announceToolbarChange(actionMessage(action));
+      return;
+    }
+
+    if (!nodes.toolbar.contains(e.target) && nodes.panel.classList.contains("is-open")) {
+      closePanel(false);
+    }
+  }
+
+  function handleDocumentKeydown(e) {
+    const nodes = getNodes();
+    if (!nodes.panel || !nodes.panel.classList.contains("is-open")) return;
+
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closePanel(true);
+    }
+  }
+
+  function bootToolbar() {
+    loadState();
+    applyState();
+    const nodes = getNodes();
+    if (nodes.panel && !nodes.panel.classList.contains("is-open")) {
+      setPanelFocusability(nodes.panel, false);
+      nodes.panel.setAttribute("inert", "");
+    } else if (nodes.panel) {
+      nodes.panel.removeAttribute("inert");
+    }
+  }
+
+  document.addEventListener("click", handleDocumentClick, true);
+  document.addEventListener("keydown", handleDocumentKeydown);
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootToolbar, { once: true });
+  } else {
+    bootToolbar();
+  }
+  document.addEventListener("pjax:success", bootToolbar);
+  document.addEventListener("pjax:scriptcomplete", bootToolbar);
+})(window, document);
+</script>
+<script>
+(function (window, document) {
+  "use strict";
+
+  if (window.__LS_DATA_SECURITY_LABEL_BOUND__) return;
+  window.__LS_DATA_SECURITY_LABEL_BOUND__ = true;
+
+  function updateDataSecurityLabel() {
+    var label = document.querySelector('label[for="datasecurity_accepted"]');
+    if (!label) return;
+    if (label.querySelector('.text-danger')) return;
+
+    label.classList.add("fw-bold");
+    label.innerHTML = 'JE VALIDE <span class="text-danger" aria-hidden="true">*</span> <span class="sr-only">champ obligatoire</span>';
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateDataSecurityLabel, { once: true });
+  } else {
+    updateDataSecurityLabel();
+  }
+  document.addEventListener("pjax:success", updateDataSecurityLabel);
+  document.addEventListener("pjax:scriptcomplete", updateDataSecurityLabel);
+})(window, document);
+</script>

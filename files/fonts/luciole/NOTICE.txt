@@ -1,0 +1,6 @@
+Luciole font files
+
+Luciole was designed by Laurent Bourcellier and Jonathan Perez.
+Project website: https://www.luciole-vision.com/
+
+The Luciole font files are distributed under Creative Commons Attribution 4.0 International (CC BY 4.0), according to the project distribution metadata and public download pages.

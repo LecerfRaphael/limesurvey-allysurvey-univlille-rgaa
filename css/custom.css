@@ -1,0 +1,3386 @@
+/******************
+    User custom CSS
+    ---------------
+
+    In this file you can add your own custom CSS
+    It will be loaded last, so you can override any other property.
+    Also, it will never be updated. So if you inheritate a core template and just add here some CSS, you'll still benefit of all the updates
+*/
+.survey-list-heading {
+  text-align: center;
+}
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
+.embed-container iframe, .embed-container object, .embed-container embed, .embed-container video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* styles compact pour les tips à droite */
+.ls-tip-anchor { position: relative; }
+.ls-tip-right{
+  position: relative; /* se place sous le legend/label */
+  margin-left: auto;
+  left:25px;
+  margin-top: .25rem;
+  padding: .35rem .5rem;
+  max-width: 32rem;
+  border: 1px solid rgba(220,53,69,.35);
+  background: #fff5f5;
+  color: #8a1c1c;
+  border-radius: .375rem;
+  font-size: .95rem;
+  line-height: 1.25rem;
+}
+@media (min-width: 768px){
+  .ls-tip-right{ margin-left: 0; }
+}
+
+.ls-tip-error legend,
+.ls-tip-error > label.ls-label-question{ color: #8a1c1c; }
+
+
+.fruity .btn-primary[disabled], .fruity .btn-primary[disabled].active, .fruity .btn-primary[disabled]:active, .fruity .btn-primary[disabled]:focus, .fruity .btn-primary[disabled]:hover, .fruity .btn-success {
+  background-color: #941b23 !important;
+  border: 1px solid #941b23 !important;
+}
+
+.question-count-text {
+ color:#000 !important;   
+}
+
+.row .col-md-6 {
+  color: #35363f !important;
+}
+.fruity a {
+  color: #B33339;
+}
+
+.fruity .slider-handle {
+  background-color: #B33339 !important;
+}
+
+.fruity .slider-selection {
+  background-image: linear-gradient(180deg,#B33339 0,#B33339) !important;
+}
+
+
+.fruity legend {
+  border-bottom: none !important;
+}
+
+.fruity .btn-primary:hover, .fruity .btn-primary:focus {
+text-decoration: underline;
+}
+
+.fruity .btn-primary:hover .ls-icon, .fruity .btn-primary:focus .ls-icon {
+  text-decoration: none!important;
+}
+.fruity .btn-check:active + .btn-primary, .fruity .btn-check:checked + .btn-primary, .fruity .btn-check:focus + .btn-primary {
+ color: #fff;
+  background-color: #333;
+  border: 1px solid #333;
+  text-decoration: underline;
+  font-weight:600;
+}
+
+.fruity .card-primary > .card-header {
+  background-color: #B33339!important;
+  border: 1px solid #B33339!important;
+  color: #fff;
+}
+
+/* rajout accessibilité */
+
+@media (min-width: 769px) {
+.fruity .navbar .navbar-nav .nav-item:after {
+background-color: #B33339 !important;
+content: "";
+display: block;
+height: 2px;
+text-align: right;
+transition: width .3s;
+width: 0;
+}
+}
+
+/* =========================================================
+  POLITIQUE DE CONFIDENTIALITE
+========================================================= */
+
+
+.is-disabled-by-consent,
+button[disabled].is-disabled-by-consent,
+input[disabled].is-disabled-by-consent {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.is-disabled-by-consent:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+
+/* =========================================================
+   ACCESSIBILITÉ - CONTRASTE DES LISTES BOOTSTRAP-SELECT
+========================================================= */
+
+/* Bouton visible du select custom */
+.bootstrap-select > .dropdown-toggle,
+.bootstrap-select > .dropdown-toggle.btn,
+.bootstrap-select > .dropdown-toggle.btn-outline-secondary {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border: 2px solid #6b7280 !important;
+  opacity: 1 !important;
+}
+
+/* Texte affiché dans le champ */
+.bootstrap-select .filter-option,
+.bootstrap-select .filter-option-inner,
+.bootstrap-select .filter-option-inner-inner {
+  color: #1a1a1a !important;
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+/* Placeholder type "Veuillez choisir..." */
+.bootstrap-select .bs-placeholder .filter-option,
+.bootstrap-select .bs-placeholder .filter-option-inner,
+.bootstrap-select .bs-placeholder .filter-option-inner-inner,
+.bootstrap-select > .dropdown-toggle.bs-placeholder,
+.bootstrap-select > .dropdown-toggle.bs-placeholder .filter-option-inner-inner {
+  color: #1a1a1a !important;
+  opacity: 1 !important;
+}
+
+/* Hover / focus */
+.bootstrap-select > .dropdown-toggle:hover,
+.bootstrap-select > .dropdown-toggle:focus,
+.bootstrap-select > .dropdown-toggle:focus-visible,
+.bootstrap-select.show > .dropdown-toggle {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #005fcc !important;
+  outline: 2px solid #005fcc !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* Menu déroulant */
+.bootstrap-select .dropdown-menu {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border: 1px solid #6b7280 !important;
+}
+
+.bootstrap-select .dropdown-menu li a,
+.bootstrap-select .dropdown-menu li a span,
+.bootstrap-select .dropdown-item {
+  color: #1a1a1a !important;
+  background: #ffffff !important;
+}
+
+.bootstrap-select .dropdown-menu li a:hover,
+.bootstrap-select .dropdown-menu li a:focus,
+.bootstrap-select .dropdown-menu .selected a,
+.bootstrap-select .dropdown-menu .active a {
+  background: #e9f2ff !important;
+  color: #111111 !important;
+}
+
+/* Zone de recherche interne */
+.bootstrap-select .bs-searchbox input,
+.bootstrap-select .bs-searchbox .form-control {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+  border: 2px solid #6b7280 !important;
+}
+
+.bootstrap-select .bs-searchbox input::placeholder {
+  color: #4b5563 !important;
+  opacity: 1 !important;
+}
+
+/* Bloc d'alerte accessibilité dans les questions */
+.question-container .ls-tip-right {
+  float: none !important;   /* annule le flottant "à droite" de Fruity */
+  display: block;           /* force un bloc sur toute la ligne */
+  width: 100%;              /* prend toute la largeur */
+  margin: 0.5rem 0 0.75rem; /* espace autour */
+}
+
+.ls-label-question {
+    font-size:1rem !important;
+}
+
+/* .tempus-dominus-widget.show {
+    display: none !important;
+} */
+
+
+/* .fruity .btn-primary {
+    display:block !important;
+} */
+
+/* Cibler le legend dans un fieldset avec la classe .mandatory */
+fieldset.mandatory legend {
+    display: inline-block; /* Utilise inline-block pour que le legend et l'asterisque soient sur la même ligne */
+    position: relative; /* Nécessaire pour positionner l'asterisque relativement à l'élément legend */
+    line-height: 1.4; /* Ajuste la hauteur de ligne si nécessaire pour un meilleur alignement */
+}
+
+/* Placer la div .asterisk juste après la première ligne de texte du legend */
+fieldset.mandatory legend .asterisk {
+    position: absolute;
+    top: 0; /* Aligne l'asterisque en haut du legend */
+    left: 100%; /* Place l'asterisque immédiatement après la première ligne du legend */
+    margin-left: 5px; /* Espace entre le texte du legend et l'asterisque */
+    float: none; /* Désactive le float */
+}
+
+/* Focus clavier sur l’élément de réponse complet (listes + tableaux array) */
+.answers-list li.ls-radio-focus,
+.radio-list li.ls-radio-focus,
+.checkbox-list li.ls-radio-focus,
+.array-flexible-row .ls-table-wrapper td.ls-radio-focus,
+.array-flexible-row .ls-table-wrapper tr.ls-radio-focus {
+  outline: 2px solid var(--ls-a11y-focus-color, #B33A00);
+  outline-offset: 3px;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px var(--ls-a11y-focus-shadow-strong, rgba(179,58,0,0.62));
+  background-color: #ffffff; 
+}
+
+/* fin accessibilité */
+
+.ls-answers {
+  padding-left: 15px !important;
+}
+
+.fruity .text-danger {
+  margin-left: 10px !important;
+}
+
+/* INPUT + RADIO COULEUR MARRON */
+
+input[type="radio"]:checked + label::before {
+  border-color: #B33339 !important;
+}
+input[type="radio"]:checked + label::after {
+  background-color: #B33339 !important;
+}
+input[type="checkbox"]:checked + label::before {
+  border-color: #B33339 !important;
+}
+input[type="checkbox"]:checked + label::after {
+  background-color: #B33339 !important;
+}
+.fruity .form-control:focus {
+    border: 1px solid var(--ls-a11y-focus-color, #B33A00);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px var(--ls-a11y-focus-shadow-strong, rgba(179,58,0,0.62))
+}
+.fruity .btn-outline-secondary {
+  background-color: hsla(0,0%,100%,.2);
+  border: 1px solid  #B33339;
+  color:  #B33339;
+}
+.fruity .btn-outline-secondary:hover {
+  background-color: hsla(0,0%,100%,.2);
+  border: 1px solid  #333;
+  color:  #333;
+}
+
+
+/* SELECT NATIF */
+
+/* Restauration générique des selects natifs */
+select.list-question-select,
+select.show-tick[data-live-search],
+select[data-live-search="true"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  color: #1a1a1a !important;
+  background: #ffffff !important;
+}
+
+/* Mode contraste */
+body.a11y-contrast select.list-question-select,
+body.a11y-contrast select.show-tick[data-live-search],
+body.a11y-contrast select[data-live-search="true"] {
+  background: #1d1d1d !important;
+  color: #ffffff !important;
+  border: 2px solid #b5b5b5 !important;
+}
+
+body.a11y-contrast .bootstrap-select > .dropdown-toggle,
+body.a11y-contrast .bootstrap-select .filter-option-inner-inner {
+  background: #1d1d1d !important;
+  color: #ffffff !important;
+  border-color: #b5b5b5 !important;
+}
+
+body.a11y-contrast .bootstrap-select > .dropdown-toggle:focus,
+body.a11y-contrast .bootstrap-select > .dropdown-toggle:hover,
+body.a11y-contrast .bootstrap-select.show > .dropdown-toggle {
+  border-color: #ffbf47 !important;
+  outline: 2px solid #ffbf47 !important;
+  outline-offset: 2px !important;
+}
+
+/* FIN INPUT + RADIO COULEUR MARRON */
+
+
+.fruity .progress-bar {
+  background-color: #B33339;
+ 
+}
+.fruity .text-info, .fruity .text-primary, .fruity .text-success {
+  color: #000000 !important;
+}
+
+/* gestion du bouton principal */
+.survey-list  li:nth-child(6) a {
+  background-color: #941b23!important;
+  border: 2px solid black;
+  color: white;
+  font-weight: bold;
+}
+.survey-list  li:nth-child(6) a:hover {
+  background-color: #333!important;
+  border: 2px solid #333;
+  color: white;
+  font-weight: bold;
+}
+/* gestion des boutons */
+.surveys-list .btn-group a:link, .surveys-list .btn-group a:visited {
+  color: #fff;
+  background-color: #941b23;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+}
+.fruity .btn-primary {
+  color: #fff;
+  background-color: #941b23;
+  border: 1px solid #941b23;
+}
+
+.fruity .btn-primary.active, .fruity .btn-primary.active.active, .fruity .btn-primary.active:focus, .fruity .btn-primary:active, 
+.fruity .btn-primary:focus, .fruity .btn-primary:hover, .fruity .open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #333;
+  border: 1px solid #333;
+}
+.surveys-list .btn-group a:hover {
+  background-color: #333;
+  border: 1px solid #333;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+.surveys-list .btn-group h2 {
+      padding-bottom : 3px !important;
+      margin-top: 0.3rem;
+     margin-bottom: 0.3rem;
+}
+
+
+.cm a:link, .cm a:visited {
+  color: #fff;
+  background-color: #941b23;
+  text-decoration: none;
+  border: solid 1px #20848;
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  border-radius: 4px;
+}
+.cm  a:hover, .cm a:active {
+color:#941b23;
+background-color:#e1e2e2;
+text-decoration: underline;
+border-radius: 4px;
+border:1px solid #000000;
+}
+
+  @media (min-width: 1200px) {
+.h2, h2 {
+  font-size: 1.1rem !important;
+}
+}
+/* FIN gestion des boutons */
+
+.footer-content {
+  background-color: #333 !important;
+  opacity: 0.92;
+  height: 185px;
+  padding-left: 25px;
+  position: fixed;
+  bottom: 0px;
+  padding-top: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  width: 100% !important;
+}
+.footer-copyright {
+    background: #333;
+    color: #fff;
+    padding-top:5px;
+    padding-bottom: 5px;
+    position: fixed;
+    bottom: 0px;
+    margin-bottom: 0px;
+    width:100%;
+}
+.footer-copyright2 {
+    background: #333;
+    color: #fff;
+    padding-top:5px;
+    padding-bottom: 3px;
+    width:100%;
+    margin-bottom:-10px;
+}
+.footer.footer {
+    min-height: auto;
+    height: auto;
+}
+.footer-content .container a {
+    color: #ffffff !important;
+}
+.footer-content .container a:hover {
+    color: #ffffff !important;
+}
+
+.fruity .dropdown-menu > li > a.disabled {
+    color: #ffffff !important;
+    font-weight: 600;
+    background: #B33339; !important;
+    text-decoration: none;
+}
+
+.fruity .dropdown-menu>.active>a, .fruity .dropdown-menu>.active>a:focus, .fruity .dropdown-menu>.active>a:hover, .fruity .dropdown-menu>li>a:focus, .fruity .dropdown-menu>li>a:hover {
+    background-color: #0f3e12 !important;
+    color: inherit !important;
+    text-decoration: underline;
+    background: none !important;
+}
+
+
+.fruity .dropdown-menu > li > a {
+  color: #000000 !important;
+}
+
+
+.nav .dropdown-item{
+    white-space:wrap !important;
+}
+
+.dropdown-menu.show{
+    inset:unset !important;
+}
+
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+  background: #ffffff !important;
+  color: #006699  !important;
+  font-weight: normal;
+}
+
+/* 13.12.2024 */
+
+.question-container {
+    position:relative;
+    padding-top:10px;
+}
+.asterisk {
+    position:absolute;
+    top:15px;
+    left:0px;
+    width:30px 
+}
+.ls-label-question {
+    padding-left:30px;
+}
+
+/* gestion du menu en haut à gauche */
+
+.btn-nostyle {
+   border: 0;
+   background: none;
+   font-size: 1.2rem;
+   line-height: 1.8rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #35363f;
+} 
+.navbar-light .navbar-nav .nav-link {
+  color: #000000;
+} 
+
+
+
+.fruity .dropdown-menu > li > a {
+  color: #000000 !important;
+}
+
+.fruity .bg-warning {
+  background-color: #B33339 !important;
+}
+
+@media (max-width: 768px) {
+    
+.footer-content {
+  display: none;
+    
+}
+
+.footer-copyright {
+   display: none;
+}    
+    
+.round3 {
+    display:none;
+    }
+  #back-top-right2 {
+  position: fixed;
+  bottom: 10px;
+  right: 0px;
+  display: none;
+  z-index: 9999;
+  margin-right: 60px;
+  margin-top: -15px;
+}
+#back-top-right2 span {
+  padding: 4px 9px;
+  /*font-size:23px; */
+  font-size: min(1.4em);
+  font-size: max(1.4em);
+  color:#941b23;
+  background:#fff;
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  display: block;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.footer.footer {
+  display: none;
+}
+}
+
+
+
+
+/* bouton retour haut */
+@media (min-width: 768px) {
+
+#back-top-right {
+  position: fixed;
+  bottom: 75px;
+  right: 0px;
+  display: none;
+  z-index: 9999;
+  margin-right: 15px;
+  margin-top: -15px;
+}
+#back-top-right span {
+  padding: 5px 12px;
+  /* font-size: 28px; */
+  font-size: min(1.5em);
+  font-size: max(1.5em);
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 50px;
+  display: block;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+#back-top-right2 {
+  position: fixed;
+  bottom: 135px;
+  right: 0px;
+  display: none;
+  z-index: 9999;
+  margin-right: 15px;
+  margin-top: -15px;
+}
+#back-top-right2 span {
+  padding: 5px 12px;
+  /* font-size:28px; */
+  font-size: min(1.5em);
+  font-size: max(1.5em);
+  color:#941b23;
+  border: 1px solid #ddd;
+  width: 50px;
+  height: 50px;
+  display: block;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+#back-top-right2:hover span {
+    color:black;
+}
+
+#back-top-right:hover span {
+    color:black;
+}
+.logophone {
+    display:none;
+}
+}
+
+/* Aligner le conteneur "Autre" à gauche */
+.checkbox-item.othertext-label-checkox-container{
+  display: inline-flex !important;    /* ou flex si tu préfères occuper toute la ligne */
+  justify-content: flex-start !important;
+  align-items: center;
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* S'assure que la colonne qui contient le bloc n'impose pas de centrage */
+li[id$="other"] .col-auto{ 
+  text-align: left !important; 
+}
+
+/* (Optionnel) Si la .row de la ligne "Autre" est centrée par Bootstrap */
+li[id$="other"] .row{
+  justify-content: flex-start !important;
+}
+
+/* (Optionnel) Le label "Autre :" sans marge parasite */
+.checkbox-item.othertext-label-checkox-container .checkbox-label{
+  margin-left:20px !important;
+}
+
+
+/* =========================================================
+   LIENS D'ÉVITEMENT (SKIP LINKS)
+========================================================= */
+
+.skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+/* Style caché par défaut */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 10px 16px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* =========================================================
+   MODE NORMAL (thème Fruity)
+========================================================= */
+
+body:not(.a11y-contrast) .skip-link {
+  background: #B33339; /* ton rouge */
+  color: #ffffff;
+  border: 2px solid #B33339;
+}
+
+/* Focus visible */
+body:not(.a11y-contrast) .skip-link:focus,
+body:not(.a11y-contrast) .skip-link:focus-visible {
+  left: 10px;
+  top: 10px;
+  outline: 3px solid #ffbf47;
+  background: #941b23; /* rouge plus foncé */
+  color: #ffffff;
+}
+
+/* =========================================================
+   MODE CONTRASTE
+========================================================= */
+
+body.a11y-contrast .skip-link {
+  background: #000000;
+  color: #ffbf47;
+  border: 2px solid #ffbf47;
+}
+
+/* Focus en contraste (très visible RGAA) */
+body.a11y-contrast .skip-link:focus,
+body.a11y-contrast .skip-link:focus-visible {
+  left: 10px;
+  top: 10px;
+  background: #000000;
+  color: #ffbf47;
+  outline: 3px solid #ffbf47;
+  box-shadow: 0 0 0 3px rgba(255,191,71,0.4);
+}
+
+/* Cible du lien d’évitement : focus clavier visible sur le contenu principal */
+#main-content:focus {
+  outline: 3px solid #ffbf47;
+  outline-offset: 4px;
+}
+
+body.a11y-contrast #main-content:focus {
+  outline-color: #ffbf47;
+  box-shadow: 0 0 0 3px rgba(255,191,71,0.35);
+}
+
+/* =========================================================
+   CONTRASTE - CORRECTION NAVBAR BOOTSTRAP 5 / BANDEAU HAUT
+========================================================= */
+
+body.a11y-contrast #survey-nav,
+body.a11y-contrast #survey-nav.navbar,
+body.a11y-contrast #survey-nav.navbar-light,
+body.a11y-contrast #survey-nav.bg-light,
+body.a11y-contrast header[role="banner"],
+body.a11y-contrast header[role="banner"] .container-fluid,
+body.a11y-contrast #dynamicReloadContainer {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #8f8f8f !important;
+}
+
+/* zone logo */
+body.a11y-contrast #survey-nav .logo-container,
+body.a11y-contrast #survey-nav .navbar-brand {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* liens et texte du bandeau */
+body.a11y-contrast #survey-nav .nav-link,
+body.a11y-contrast #survey-nav .navbar-brand,
+body.a11y-contrast #survey-nav .dropdown-toggle,
+body.a11y-contrast #survey-nav .navbar-text {
+  color: #fff !important;
+}
+
+body.a11y-contrast .navbar-toggler-icon {
+  filter: invert(1) contrast(200%);
+}
+
+/* hover/focus */
+body.a11y-contrast #survey-nav .nav-link:hover,
+body.a11y-contrast #survey-nav .nav-link:focus,
+body.a11y-contrast #survey-nav .dropdown-toggle:hover,
+body.a11y-contrast #survey-nav .dropdown-toggle:focus {
+  color: #ffbf47 !important;
+  text-decoration: underline !important;
+}
+
+/* bouton burger éventuel */
+body.a11y-contrast #survey-nav .navbar-toggler {
+  background: #000 !important;
+  border-color: #ffbf47 !important;
+}
+
+body.a11y-contrast #survey-nav .navbar-toggler-icon {
+  filter: invert(1) contrast(200%);
+}
+
+/* supprimer les fonds clairs bootstrap */
+body.a11y-contrast .bg-light,
+body.a11y-contrast .navbar-light {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+/* =========================================================
+   BARRE ACCESSIBILITÉ - BASE
+========================================================= */
+
+.a11y-toolbar {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  top: auto;
+  z-index: 3005;
+}
+
+.a11y-toolbar svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.a11y-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  min-height: 48px;
+  padding: .75rem 1rem;
+  border: 2px solid #B33339;
+  border-radius: 999px;
+  background: #B33339;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.a11y-toggle:hover,
+.a11y-toggle:focus-visible {
+  background: #000000;
+  border-color: #000000;
+  color: #fff;
+}
+
+.a11y-toggle__icon {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
+}
+
+.a11y-toggle__icon svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.a11y-panel {
+  position: absolute;
+  right: 0;
+  top: auto;
+  bottom: calc(100% + .75rem);
+  width: min(360px, calc(100vw - 2rem));
+  background: #fff;
+  color: #1a1a1a;
+  border: 1px solid #d7dbe2;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+
+.a11y-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.a11y-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1rem .85rem;
+  border-bottom: 1px solid #e2e6ec;
+}
+
+.a11y-panel__titlewrap {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  min-width: 0;
+}
+
+/* Badge du header */
+.a11y-panel__badge {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #B33339;
+  overflow: hidden;
+  flex: 0 0 48px;
+}
+
+.a11y-panel__badge svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.a11y-panel__title {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.a11y-panel__subtitle {
+  margin: .25rem 0 0;
+  color: #5f6b7a;
+  font-size: .92rem;
+}
+
+.a11y-close {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.a11y-close svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.a11y-panel__body {
+  padding: .9rem;
+  display: grid;
+  gap: .75rem;
+}
+
+.a11y-section {
+  border: 1px solid #e2e6ec;
+  border-radius: 14px;
+  padding: .9rem;
+  background: #fff;
+}
+
+.a11y-section__head {
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
+
+/* Icônes des sections */
+.a11y-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #B33339;
+  overflow: hidden;
+  flex: 0 0 42px;
+}
+
+.a11y-icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.a11y-section__title {
+  margin: 0 0 .25rem;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.a11y-section__desc {
+  margin: 0;
+  color: #5f6b7a;
+  font-size: .9rem;
+  line-height: 1.35;
+}
+
+.a11y-inline-controls {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.a11y-btn,
+.a11y-option,
+.a11y-close {
+  border: 1px solid #cfd6df;
+  border-radius: 12px;
+  background: #fff;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.a11y-btn {
+  min-height: 44px;
+  padding: .7rem .95rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.a11y-btn--primary {
+  width: 100%;
+  background: #B33339;
+  border-color: #B33339;
+  color: #fff;
+}
+
+.a11y-btn--primary:hover,
+.a11y-btn--primary:focus-visible {
+  background: #000000;
+  border-color: #000000;
+  color: #fff;
+}
+
+.a11y-value {
+  min-width: 72px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .75rem;
+  border: 1px solid #cfd6df;
+  border-radius: 12px;
+  font-weight: 700;
+  background: #f8fafc;
+  line-height: 1;
+}
+
+/* Grille options */
+.a11y-toggle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+
+.a11y-option {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  width: 100%;
+  min-height: 64px;
+  padding: .8rem;
+  text-align: left;
+  line-height: 1.25;
+}
+
+/* Icônes des options */
+.a11y-option__icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #B33339;
+  flex: 0 0 24px;
+  overflow: hidden;
+}
+
+.a11y-option__icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.a11y-option__text {
+  display: block;
+  min-width: 0;
+}
+
+.a11y-option__text strong {
+  display: block;
+  font-size: .95rem;
+  line-height: 1.2;
+}
+
+.a11y-option__text small {
+  display: block;
+  margin-top: .2rem;
+  color: #5f6b7a;
+  font-size: .82rem;
+  line-height: 1.3;
+}
+
+.a11y-option.is-active,
+.a11y-option[aria-pressed="true"] {
+  background: #eaf2ff;
+  border-color: #7aa7ff;
+}
+
+.a11y-toggle:focus,
+.a11y-btn:focus,
+.a11y-option:focus,
+.a11y-close:focus {
+  outline: auto;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   MODE CONTRASTE ADAPTÉ À Limesurvey Fruity
+========================================================= */
+
+html.a11y-contrast,
+body.a11y-contrast {
+  background: #121212 !important;
+  color: #f5f5f5 !important;
+}
+
+/* Fond principal */
+body.a11y-contrast,
+body.a11y-contrast #outerframeContainer,
+body.a11y-contrast #main-col,
+body.a11y-contrast .group-container,
+body.a11y-contrast .top-container,
+body.a11y-contrast .question-container,
+body.a11y-contrast .question-title-container,
+body.a11y-contrast .question-valid-container,
+body.a11y-contrast .answer-container,
+body.a11y-contrast .question-help-container,
+body.a11y-contrast .alert,
+body.a11y-contrast .well,
+body.a11y-contrast .panel,
+body.a11y-contrast .modal-content {
+  background: #121212 !important;
+  color: #f5f5f5 !important;
+  border-color: #8f8f8f !important;
+  box-shadow: none !important;
+}
+
+/* Navbar */
+body.a11y-contrast .navbar.navbar-default,
+body.a11y-contrast .navbar-default,
+body.a11y-contrast #navbar {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #8f8f8f !important;
+}
+
+body.a11y-contrast .navbar-default .navbar-brand,
+body.a11y-contrast .navbar-default .navbar-nav > li > a,
+body.a11y-contrast .navbar-default .navbar-text {
+  color: #fff !important;
+}
+
+body.a11y-contrast .navbar-default .navbar-nav > li > a:hover,
+body.a11y-contrast .navbar-default .navbar-nav > li > a:focus,
+body.a11y-contrast .navbar-default .navbar-brand:hover,
+body.a11y-contrast .navbar-default .navbar-brand:focus {
+  color: #ffe44d !important;
+  text-decoration: underline !important;
+}
+
+/* Liens */
+body.a11y-contrast a {
+  color: #ffbf47 !important;
+  text-decoration: underline !important;
+}
+
+body.a11y-contrast a:hover,
+body.a11y-contrast a:focus {
+  color: #fff07a !important;
+}
+
+/* Textes généraux */
+body.a11y-contrast p,
+body.a11y-contrast span,
+body.a11y-contrast div,
+body.a11y-contrast li,
+body.a11y-contrast td,
+body.a11y-contrast th,
+body.a11y-contrast label,
+body.a11y-contrast .help-block,
+body.a11y-contrast .ls-questionhelp,
+body.a11y-contrast .text-info,
+body.a11y-contrast .text-danger {
+  color: #f5f5f5 !important;
+}
+
+/* Titres */
+body.a11y-contrast h1,
+body.a11y-contrast h2,
+body.a11y-contrast h3,
+body.a11y-contrast h4,
+body.a11y-contrast h5,
+body.a11y-contrast h6,
+body.a11y-contrast .group-title,
+body.a11y-contrast .question-title-container {
+  color: #ffffff !important;
+}
+
+/* Champs de formulaire */
+body.a11y-contrast .form-control,
+body.a11y-contrast input,
+body.a11y-contrast select,
+body.a11y-contrast textarea {
+  background: #1d1d1d !important;
+  color: #fff !important;
+  border: 2px solid #b5b5b5 !important;
+}
+
+body.a11y-contrast .form-control::placeholder,
+body.a11y-contrast input::placeholder,
+body.a11y-contrast textarea::placeholder {
+  color: #d9d9d9 !important;
+  opacity: 1 !important;
+}
+
+/* Boutons */
+body.a11y-contrast .btn,
+body.a11y-contrast button {
+  background: #1f1f1f !important;
+  color: #fff !important;
+  border: 2px solid #d0d0d0 !important;
+  text-shadow: none !important;
+}
+
+body.a11y-contrast .btn:hover,
+body.a11y-contrast .btn:focus,
+body.a11y-contrast button:hover,
+body.a11y-contrast button:focus {
+  background: #2d2d2d !important;
+  color: #ffbf47 !important;
+  border-color: #ffbf47 !important;
+}
+
+body.a11y-contrast .btn-primary,
+body.a11y-contrast .btn-default,
+body.a11y-contrast .btn-info,
+body.a11y-contrast .btn-success,
+body.a11y-contrast .btn-warning,
+body.a11y-contrast .btn-danger {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Focus très visible */
+body.a11y-contrast a:focus,
+body.a11y-contrast button:focus,
+body.a11y-contrast .btn:focus,
+body.a11y-contrast input:focus,
+body.a11y-contrast select:focus,
+body.a11y-contrast textarea:focus,
+body.a11y-contrast [tabindex]:focus,
+body.a11y-contrast label:focus-within {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+/* Tableaux */
+body.a11y-contrast table,
+body.a11y-contrast .table,
+body.a11y-contrast .table-bordered,
+body.a11y-contrast .ls-answers {
+  background: #121212 !important;
+  color: #fff !important;
+  border-color: #8f8f8f !important;
+  margin-left: 10px !important;
+}
+
+body.a11y-contrast .table > thead > tr > th,
+body.a11y-contrast .table > tbody > tr > th,
+body.a11y-contrast .table > tbody > tr > td,
+body.a11y-contrast .table > tfoot > tr > td {
+  border-color: #8f8f8f !important;
+  color: #fff !important;
+}
+
+body.a11y-contrast .ls-even {
+  background: #1a1a1a !important;
+}
+
+/* Progression */
+body.a11y-contrast .progress {
+  background: #2b2b2b !important;
+  border: 1px solid #8f8f8f !important;
+}
+
+body.a11y-contrast .progress .progress-bar {
+  background: #ffbf47 !important;
+  color: #000 !important;
+}
+
+/* Modales */
+body.a11y-contrast .modal-content,
+body.a11y-contrast .modal-header,
+body.a11y-contrast .modal-body,
+body.a11y-contrast .modal-footer {
+  background: #121212 !important;
+  color: #fff !important;
+  border-color: #8f8f8f !important;
+}
+
+/* Cases et radios */
+body.a11y-contrast .checkbox-item label,
+body.a11y-contrast .radio-item label {
+  color: #fff !important;
+}
+
+/* Messages d’erreur */
+body.a11y-contrast .has-error .form-control,
+body.a11y-contrast .input-error .form-control {
+  border-color: #ff8f8f !important;
+}
+
+body.a11y-contrast .text-danger,
+body.a11y-contrast .error,
+body.a11y-contrast .help-block.text-danger {
+  color: #ffbf47 !important;
+}
+
+/* Barre accessibilité elle-même */
+body.a11y-contrast .a11y-panel,
+body.a11y-contrast .a11y-section,
+body.a11y-contrast .a11y-value {
+  background: #121212 !important;
+  color: #fff !important;
+  border-color: #8f8f8f !important;
+}
+
+body.a11y-contrast .a11y-panel__subtitle,
+body.a11y-contrast .a11y-section__desc,
+body.a11y-contrast .a11y-option__text small {
+  color: #d9d9d9 !important;
+}
+
+body.a11y-contrast .a11y-btn,
+body.a11y-contrast .a11y-option,
+body.a11y-contrast .a11y-close {
+  background: #1f1f1f !important;
+  color: #fff !important;
+  border-color: #cfcfcf !important;
+}
+
+body.a11y-contrast .a11y-option.is-active,
+body.a11y-contrast .a11y-option[aria-pressed="true"] {
+  background: #2b2b2b !important;
+  border-color: #ffbf47 !important;
+}
+
+body.a11y-contrast .a11y-panel__badge,
+body.a11y-contrast .a11y-icon {
+  background: #2b2b2b !important;
+  color: #ffbf47 !important;
+}
+
+/* Mode contraste : alertes aria-live */
+body.a11y-contrast .question-container .ls-tip-right {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 2px solid #ffbf47 !important;
+  border-left: 5px solid #ffbf47 !important;
+  box-shadow: none !important;
+}
+
+body.a11y-contrast .question-container .ls-tip-right * {
+  color: #ffffff !important;
+}
+
+body.a11y-contrast .question-container .ls-tip-right a {
+  color: #ffe44d !important;
+  text-decoration: underline !important;
+}
+
+/* =========================================================
+   INDEX DES QUESTIONS - VERSION PROPRE
+========================================================= */
+
+/* Conteneur du menu */
+.fruity .index-menu-full .dropdown-menu,
+body.a11y-contrast .index-menu-full .dropdown-menu,
+body.a11y-contrast .index-menu-full .dropdown-menu.show {
+  background: #121212 !important;
+  border: 1px solid #8f8f8f !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Tous les items */
+.fruity .index-menu-full .dropdown-menu li,
+.fruity .index-menu-full .dropdown-menu .dropdown-item {
+  background: transparent !important;
+  border: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Liens du menu */
+.fruity .index-menu-full .dropdown-menu .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 8px 14px !important;
+  white-space: normal !important;
+  color: #ffffff !important;
+  text-decoration: underline !important;
+  background: #121212 !important;
+}
+
+/* Hover / focus */
+.fruity .index-menu-full .dropdown-menu .dropdown-item:hover,
+.fruity .index-menu-full .dropdown-menu .dropdown-item:focus {
+  background: #2b2b2b !important;
+  color: #ffbf47 !important;
+  text-decoration: underline !important;
+}
+
+/* Item courant */
+body:not(.a11y-contrast) .fruity .index-menu-full .dropdown-menu .index-item-current,
+body:not(.a11y-contrast) .fruity .index-menu-full .dropdown-menu .index-item-current > .dropdown-item,
+body:not(.a11y-contrast) .fruity .index-menu-full .dropdown-menu .dropdown-item.bg-warning,
+body:not(.a11y-contrast) .fruity .index-menu-full .dropdown-menu .dropdown-item.bg-warning.disabled {
+  background: #B33339 !important;
+  color: #ffffff !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  box-shadow: none !important;
+}
+
+body.a11y-contrast .index-menu-full .dropdown-menu .index-item-current,
+body.a11y-contrast .index-menu-full .dropdown-menu .index-item-current > .dropdown-item,
+body.a11y-contrast .index-menu-full .dropdown-menu .dropdown-item.bg-warning,
+body.a11y-contrast .index-menu-full .dropdown-menu .dropdown-item.bg-warning.disabled {
+  background: #2b2b2b !important;
+  color: #ffbf47 !important;
+  border: 0 !important;
+  border-left: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Empêcher toute pseudo-décoration parasite */
+.fruity .index-menu-full .dropdown-menu .index-item-current::before,
+.fruity .index-menu-full .dropdown-menu .index-item-current::after,
+.fruity .index-menu-full .dropdown-menu .dropdown-item.bg-warning::before,
+.fruity .index-menu-full .dropdown-menu .dropdown-item.bg-warning::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Item désactivé courant lisible */
+.fruity .index-menu-full .dropdown-menu .dropdown-item.disabled,
+.fruity .index-menu-full .dropdown-menu .dropdown-item:disabled {
+  opacity: 1 !important;
+}
+
+/* =========================================================
+   CONTRASTE - MARGE GAUCHE DU TITRE DE QUESTION
+========================================================= */
+
+body.a11y-contrast .question-container {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+
+body.a11y-contrast .ls-label-question,
+body.a11y-contrast legend.ls-label-question {
+  padding-left: 38px !important;
+}
+
+body.a11y-contrast .asterisk {
+  left: 10px !important;
+}
+
+
+/* =========================================================
+   MODE CONTRASTE - RADIOS / CHECKBOX / FOCUS EN JAUNE
+========================================================= */
+
+body.a11y-contrast .radio-item input[type="radio"]:checked + label,
+body.a11y-contrast .checkbox-item input[type="checkbox"]:checked + label {
+  color: #ffbf47 !important;
+  font-weight: 700;
+}
+
+/* Radio cochée */
+body.a11y-contrast input[type="radio"]:checked + label::before {
+  border-color: #ffbf47 !important;
+}
+
+body.a11y-contrast input[type="radio"]:checked + label::after {
+  background-color: #ffbf47 !important;
+}
+
+/* Checkbox cochée */
+body.a11y-contrast input[type="checkbox"]:checked + label::before {
+  border-color: #ffbf47 !important;
+}
+
+body.a11y-contrast input[type="checkbox"]:checked + label::after {
+  background-color: #ffbf47 !important;
+  color: #000 !important;
+}
+
+/* Contour de base des faux contrôles */
+body.a11y-contrast .radio-item label::before,
+body.a11y-contrast .checkbox-item label::before {
+  border-color: #d9d9d9 !important;
+  background: #121212 !important;
+}
+
+/* Focus clavier sur l’élément de réponse complet */
+body.a11y-contrast .answers-list li.ls-radio-focus,
+body.a11y-contrast .radio-list li.ls-radio-focus,
+body.a11y-contrast .checkbox-list li.ls-radio-focus,
+body.a11y-contrast .array-flexible-row .ls-table-wrapper td.ls-radio-focus,
+body.a11y-contrast .array-flexible-row .ls-table-wrapper tr.ls-radio-focus {
+  outline: 2px solid #ffbf47 !important;
+  outline-offset: 3px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 0 3px rgba(255, 191, 71, 0.35) !important;
+  background-color: #1a1a1a !important;
+}
+
+/* Focus direct sur input */
+body.a11y-contrast input[type="radio"]:focus + label::before,
+body.a11y-contrast input[type="checkbox"]:focus + label::before,
+body.a11y-contrast input[type="radio"]:focus-visible + label::before,
+body.a11y-contrast input[type="checkbox"]:focus-visible + label::before {
+  border-color: #ffbf47 !important;
+  box-shadow: 0 0 0 3px rgba(255, 191, 71, 0.35) !important;
+}
+
+/* Etat hover optionnel */
+body.a11y-contrast .radio-item:hover label::before,
+body.a11y-contrast .checkbox-item:hover label::before {
+  border-color: #ffdf8a !important;
+}
+
+/* =========================================================
+   CORRECTION LEGEND + AIDE (LISTE DÉROULANTE)
+========================================================= */
+
+body.a11y-contrast .ls-label-question,
+body.a11y-contrast legend.ls-label-question {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* Texte d’aide sous la question */
+body.a11y-contrast .ls-questionhelp,
+body.a11y-contrast .ls-questionhelp * {
+  color: #dcdcdc !important;
+}
+
+/* Message "Veuillez sélectionner..." */
+body.a11y-contrast .ls-question-message {
+  color: #ffe44d !important; /* jaune accessible */
+  font-weight: 600;
+}
+
+/* Cas spécifique LimeSurvey */
+body.a11y-contrast .ls-em-success {
+  color: #ffbf47 !important;
+}
+
+/* Supprimer les couleurs bootstrap qui cassent */
+body.a11y-contrast .text-success,
+body.a11y-contrast .text-info,
+body.a11y-contrast .text-primary {
+  color: #ffe44d !important;
+}
+
+/* =========================================================
+   CONTRASTE - LISTES DÉROULANTES / SELECT PICKER
+========================================================= */
+
+/* Champ visible fermé */
+body.a11y-contrast .bootstrap-select > .dropdown-toggle,
+body.a11y-contrast .bootstrap-select > .dropdown-toggle.btn-default,
+body.a11y-contrast .bootstrap-select > .dropdown-toggle.btn-light,
+body.a11y-contrast .bootstrap-select .dropdown-toggle {
+  background: #1d1d1d !important;
+  color: #ffffff !important;
+  border: 2px solid #b5b5b5 !important;
+  text-shadow: none !important;
+}
+
+/* Texte affiché dans le champ : "Veuillez choisir ..." */
+body.a11y-contrast .bootstrap-select .filter-option,
+body.a11y-contrast .bootstrap-select .filter-option-inner,
+body.a11y-contrast .bootstrap-select .filter-option-inner-inner,
+body.a11y-contrast .bootstrap-select .dropdown-toggle .text,
+body.a11y-contrast .bootstrap-select .dropdown-toggle .filter-option-inner-inner {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Flèche/caret */
+body.a11y-contrast .bootstrap-select .caret,
+body.a11y-contrast .bootstrap-select .bs-caret,
+body.a11y-contrast .bootstrap-select .dropdown-toggle::after {
+  color: #ffffff !important;
+  border-top-color: #ffffff !important;
+}
+
+/* Focus du champ */
+body.a11y-contrast .bootstrap-select > .dropdown-toggle:focus,
+body.a11y-contrast .bootstrap-select > .dropdown-toggle:hover,
+body.a11y-contrast .bootstrap-select.open > .dropdown-toggle,
+body.a11y-contrast .bootstrap-select.show > .dropdown-toggle {
+  background: #2a2a2a !important;
+  color: #ffffff !important;
+  border-color: #ffbf47 !important;
+  box-shadow: 0 0 0 3px rgba(255, 191, 71, 0.35) !important;
+}
+
+/* Menu déroulant */
+body.a11y-contrast .bootstrap-select .dropdown-menu,
+body.a11y-contrast .bootstrap-select .dropdown-menu.inner,
+body.a11y-contrast .dropdown-menu.show {
+  background: #121212 !important;
+  color: #ffffff !important;
+  border: 1px solid #8f8f8f !important;
+}
+
+/* Options du menu */
+body.a11y-contrast .bootstrap-select .dropdown-menu > li > a,
+body.a11y-contrast .bootstrap-select .dropdown-menu > li > a span,
+body.a11y-contrast .bootstrap-select .dropdown-menu .dropdown-item,
+body.a11y-contrast .bootstrap-select .dropdown-menu li a {
+  background: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* Option survolée / active */
+body.a11y-contrast .bootstrap-select .dropdown-menu > li > a:hover,
+body.a11y-contrast .bootstrap-select .dropdown-menu > li > a:focus,
+body.a11y-contrast .bootstrap-select .dropdown-menu > .active > a,
+body.a11y-contrast .bootstrap-select .dropdown-menu > .active > a:hover,
+body.a11y-contrast .bootstrap-select .dropdown-menu > .active > a:focus,
+body.a11y-contrast .bootstrap-select .dropdown-menu .selected a,
+body.a11y-contrast .bootstrap-select .dropdown-menu .selected a span {
+  background: #2b2b2b !important;
+  color: #ffe44d !important;
+  text-decoration: none !important;
+}
+
+/* Zone de recherche si live search */
+body.a11y-contrast .bootstrap-select .bs-searchbox input,
+body.a11y-contrast .bootstrap-select .bs-searchbox .form-control {
+  background: #1d1d1d !important;
+  color: #ffffff !important;
+  border: 2px solid #b5b5b5 !important;
+}
+
+body.a11y-contrast .bootstrap-select .bs-searchbox input::placeholder {
+  color: #d9d9d9 !important;
+  opacity: 1 !important;
+}
+
+/* =========================================================
+   OPTIONS D’AFFICHAGE COMPLÉMENTAIRES
+========================================================= */
+
+/* Noir et blanc */
+body.a11y-grayscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+/* Espacement augmenté */
+body.a11y-spacing {
+  line-height: 1.7 !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.08em !important;
+}
+
+body.a11y-spacing p,
+body.a11y-spacing li,
+body.a11y-spacing label,
+body.a11y-spacing input,
+body.a11y-spacing textarea,
+body.a11y-spacing select,
+body.a11y-spacing .question-text-item,
+body.a11y-spacing .ls-questionhelp,
+body.a11y-spacing .help-block,
+body.a11y-spacing .question-title-container,
+body.a11y-spacing .answer-container,
+body.a11y-spacing .radio-list li,
+body.a11y-spacing .checkbox-item label,
+body.a11y-spacing .radio-item label {
+  line-height: 1.8 !important;
+  letter-spacing: 0.02em !important;
+  word-spacing: 0.08em !important;
+}
+
+/* Un peu plus d'air entre les blocs */
+body.a11y-spacing .question-container,
+body.a11y-spacing .a11y-section,
+body.a11y-spacing .form-group {
+  margin-bottom: 1.25rem !important;
+}
+
+@font-face {
+  font-family: "OpenDyslexic-Regular";
+  src: url("https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/woff/OpenDyslexic-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: local("Luciole"), local("Luciole-Regular"),
+       url("../files/fonts/luciole/Luciole-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: local("Luciole Bold"), local("Luciole-Bold"),
+       url("../files/fonts/luciole/Luciole-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: local("Luciole Italic"), local("Luciole-Regular-Italic"),
+       url("../files/fonts/luciole/Luciole-Regular-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Luciole";
+  src: local("Luciole Bold Italic"), local("Luciole-Bold-Italic"),
+       url("../files/fonts/luciole/Luciole-Bold-Italic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+/* Mode dyslexie */
+body.a11y-dyslexia,
+body.a11y-dyslexia button,
+body.a11y-dyslexia input,
+body.a11y-dyslexia select,
+body.a11y-dyslexia textarea,
+body.a11y-dyslexia label,
+body.a11y-dyslexia p,
+body.a11y-dyslexia li,
+body.a11y-dyslexia span,
+body.a11y-dyslexia div {
+  font-family: "OpenDyslexic-Regular", "OpenDyslexic", Arial, Helvetica, sans-serif !important;
+}
+
+
+/* Optionnel : lisibilité renforcée en mode dyslexie */
+body.a11y-dyslexia p,
+body.a11y-dyslexia li,
+body.a11y-dyslexia label,
+body.a11y-dyslexia .help-block,
+body.a11y-dyslexia .ls-questionhelp {
+  line-height: 1.65 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* Mode Luciole : police concue pour ameliorer le confort de lecture des personnes malvoyantes. */
+body.a11y-luciole,
+body.a11y-luciole button,
+body.a11y-luciole input,
+body.a11y-luciole select,
+body.a11y-luciole textarea,
+body.a11y-luciole label,
+body.a11y-luciole p,
+body.a11y-luciole li,
+body.a11y-luciole span,
+body.a11y-luciole div {
+  font-family: "Luciole", Verdana, Arial, Helvetica, sans-serif !important;
+}
+
+body.a11y-luciole p,
+body.a11y-luciole li,
+body.a11y-luciole label,
+body.a11y-luciole .help-block,
+body.a11y-luciole .ls-questionhelp {
+  line-height: 1.6 !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+  .a11y-toolbar {
+    top: auto;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .a11y-toggle {
+    width: 100%;
+  }
+
+  .a11y-panel {
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: calc(100% + .75rem);
+  }
+
+  .a11y-toggle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================================
+   QUESTIONS CLASSEMENT / RANKING ACCESSIBLES RGAA + NVDA
+   À utiliser avec initRankingQuestionsA11y(root)
+========================================================= */
+
+/* Affiche la version native en listes déroulantes */
+.question-container.ranking.ls-ranking-a11y-enabled .select-sortable-lists .select-list,
+.question-container.ls-ranking-a11y-enabled .select-sortable-lists .select-list,
+fieldset.ranking.ls-ranking-a11y-enabled .select-sortable-lists .select-list,
+fieldset.ls-ranking-a11y-enabled .select-sortable-lists .select-list {
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  white-space: normal !important;
+  margin: 1rem 0 !important;
+  padding: 1rem !important;
+  border: 1px solid #d8dee9 !important;
+  border-radius: .75rem !important;
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* Cache la version glisser-déposer, non fiable pour NVDA */
+.question-container.ranking.ls-ranking-a11y-enabled .select-sortable-lists .ls-no-js-hidden,
+.question-container.ls-ranking-a11y-enabled .select-sortable-lists .ls-no-js-hidden,
+fieldset.ranking.ls-ranking-a11y-enabled .select-sortable-lists .ls-no-js-hidden,
+fieldset.ls-ranking-a11y-enabled .select-sortable-lists .ls-no-js-hidden {
+  display: none !important;
+}
+
+/* Ligne d’un rang */
+.question-container.ls-ranking-a11y-enabled .select-item,
+fieldset.ls-ranking-a11y-enabled .select-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Label du rang : Premier choix, choix classé 2, etc. */
+.question-container.ls-ranking-a11y-enabled .select-item label,
+fieldset.ls-ranking-a11y-enabled .select-item label {
+  font-weight: 700 !important;
+  margin-bottom: 0 !important;
+  color: #1a1a1a !important;
+}
+
+/* Colonnes Bootstrap remises à plat */
+.question-container.ls-ranking-a11y-enabled .select-item .col-md-8,
+.question-container.ls-ranking-a11y-enabled .select-item .col-md-4,
+fieldset.ls-ranking-a11y-enabled .select-item .col-md-8,
+fieldset.ls-ranking-a11y-enabled .select-item .col-md-4 {
+  width: auto !important;
+  max-width: none !important;
+  flex: 1 1 auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Select lisible */
+.question-container.ls-ranking-a11y-enabled select.form-select,
+.question-container.ls-ranking-a11y-enabled select,
+fieldset.ls-ranking-a11y-enabled select.form-select,
+fieldset.ls-ranking-a11y-enabled select {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Focus clavier renforcé */
+.question-container.ls-ranking-a11y-enabled select.form-select:focus,
+.question-container.ls-ranking-a11y-enabled select:focus,
+fieldset.ls-ranking-a11y-enabled select.form-select:focus,
+fieldset.ls-ranking-a11y-enabled select:focus {
+  outline: 3px solid var(--ls-a11y-focus-color, #B33A00) !important;
+  outline-offset: 2px !important;
+  border-color: var(--ls-a11y-focus-color, #B33A00) !important;
+  box-shadow: 0 0 0 3px var(--ls-a11y-focus-shadow, rgba(179, 58, 0, 0.30)) !important;
+}
+
+/* Consigne visible */
+.ls-ranking-a11y-help {
+  margin: .75rem 0 1rem !important;
+  padding: .75rem 1rem !important;
+  border-left: 4px solid #B33339 !important;
+  background: #fff6f6 !important;
+  color: #1a1a1a !important;
+  border-radius: .4rem !important;
+  line-height: 1.45 !important;
+}
+
+.ls-ranking-a11y-help strong {
+  color: #941b23 !important;
+}
+
+/* Compatible avec tes classes déjà présentes */
+.sr-only,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* =========================================================
+   QUESTIONS CLASSEMENT - MODE CONTRASTE
+========================================================= */
+
+body.a11y-contrast .question-container.ranking.ls-ranking-a11y-enabled .select-sortable-lists .select-list,
+body.a11y-contrast .question-container.ls-ranking-a11y-enabled .select-sortable-lists .select-list,
+body.a11y-contrast fieldset.ranking.ls-ranking-a11y-enabled .select-sortable-lists .select-list,
+body.a11y-contrast fieldset.ls-ranking-a11y-enabled .select-sortable-lists .select-list {
+  background: #121212 !important;
+  color: #ffffff !important;
+  border: 2px solid #8f8f8f !important;
+}
+
+body.a11y-contrast .question-container.ls-ranking-a11y-enabled .select-item label,
+body.a11y-contrast fieldset.ls-ranking-a11y-enabled .select-item label {
+  color: #ffffff !important;
+}
+
+body.a11y-contrast .question-container.ls-ranking-a11y-enabled select.form-select,
+body.a11y-contrast .question-container.ls-ranking-a11y-enabled select,
+body.a11y-contrast fieldset.ls-ranking-a11y-enabled select.form-select,
+body.a11y-contrast fieldset.ls-ranking-a11y-enabled select {
+  background: #1d1d1d !important;
+  color: #ffffff !important;
+  border: 2px solid #b5b5b5 !important;
+}
+
+body.a11y-contrast .question-container.ls-ranking-a11y-enabled select.form-select:focus,
+body.a11y-contrast .question-container.ls-ranking-a11y-enabled select:focus,
+body.a11y-contrast fieldset.ls-ranking-a11y-enabled select.form-select:focus,
+body.a11y-contrast fieldset.ls-ranking-a11y-enabled select:focus {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 2px !important;
+  border-color: #ffbf47 !important;
+  box-shadow: none !important;
+}
+
+body.a11y-contrast .ls-ranking-a11y-help {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border: 2px solid #ffbf47 !important;
+  border-left: 5px solid #ffbf47 !important;
+}
+
+body.a11y-contrast .ls-ranking-a11y-help strong {
+  color: #ffbf47 !important;
+}
+
+/* =========================================================
+   QUESTIONS CLASSEMENT - MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .question-container.ls-ranking-a11y-enabled .select-item,
+  fieldset.ls-ranking-a11y-enabled .select-item {
+    display: block !important;
+  }
+
+  .question-container.ls-ranking-a11y-enabled .select-item label,
+  fieldset.ls-ranking-a11y-enabled .select-item label {
+    display: block !important;
+    margin-bottom: .35rem !important;
+  }
+
+  .question-container.ls-ranking-a11y-enabled select.form-select,
+  .question-container.ls-ranking-a11y-enabled select,
+  fieldset.ls-ranking-a11y-enabled select.form-select,
+  fieldset.ls-ranking-a11y-enabled select {
+    width: 100% !important;
+  }
+}
+
+/* Titre de groupe / page RGAA */
+.ls-a11y-group-header {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.ls-a11y-page-title {
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  line-height: 1.25;
+  font-weight: 700;
+}
+.ls-a11y-page-number {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+/* =========================================================
+   CORRECTION AFFICHAGE H1 / GROUPE
+   Le conteneur parent .group-outer-container est en display:flex.
+   Si le H1 et le formulaire sont deux enfants directs, ils passent côte à côte.
+   On garde donc un seul conteneur racine et on force l'empilement vertical.
+========================================================= */
+
+.ls-a11y-group-container-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  display: block !important;
+}
+
+.ls-a11y-group-header,
+#ls-group-header {
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100% !important;
+  display: block !important;
+  clear: both !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.ls-a11y-group-fieldset {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.ls-a11y-page-title {
+  width: 100% !important;
+  max-width: 100% !important;
+  text-align: center !important;
+}
+
+/* =========================================================
+   P1 RGAA 10 / WCAG 2.4.7 - Focus visible global
+   Objectif : neutraliser les anciennes suppressions de focus
+   de Fruity/theme.css et garantir un repère clavier visible.
+========================================================= */
+
+.fruity a:focus,
+.fruity button:focus,
+.fruity .btn:focus,
+.fruity input:focus,
+.fruity select:focus,
+.fruity textarea:focus,
+.fruity [tabindex]:focus,
+.fruity [role="button"]:focus,
+.fruity [role="link"]:focus,
+.fruity [role="tab"]:focus,
+.fruity [role="menuitem"]:focus,
+.fruity summary:focus,
+.fruity a:focus-visible,
+.fruity button:focus-visible,
+.fruity .btn:focus-visible,
+.fruity input:focus-visible,
+.fruity select:focus-visible,
+.fruity textarea:focus-visible,
+.fruity [tabindex]:focus-visible,
+.fruity [role="button"]:focus-visible,
+.fruity [role="link"]:focus-visible,
+.fruity [role="tab"]:focus-visible,
+.fruity [role="menuitem"]:focus-visible,
+.fruity summary:focus-visible,
+.fruity .bootstrap-select > .dropdown-toggle:focus,
+.fruity .bootstrap-select > .dropdown-toggle:focus-visible,
+.fruity #sidebar .tabbutton.btn-primary:focus,
+.fruity #sidebar .tabbutton.btn-primary:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(0, 95, 204, 0.22) !important;
+}
+
+.fruity input[type="radio"]:focus + label,
+.fruity input[type="checkbox"]:focus + label,
+.fruity input[type="radio"]:focus-visible + label,
+.fruity input[type="checkbox"]:focus-visible + label {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: .2em !important;
+}
+
+.fruity input[type="radio"]:focus + label::before,
+.fruity input[type="checkbox"]:focus + label::before,
+.fruity input[type="radio"]:focus-visible + label::before,
+.fruity input[type="checkbox"]:focus-visible + label::before,
+.fruity .radio-item input[type="radio"]:focus + label::before,
+.fruity .checkbox-item input[type="checkbox"]:focus + label::before {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 4px !important;
+  box-shadow: 0 0 0 4px rgba(0, 95, 204, 0.22) !important;
+}
+
+body.a11y-contrast .fruity a:focus,
+body.a11y-contrast .fruity button:focus,
+body.a11y-contrast .fruity .btn:focus,
+body.a11y-contrast .fruity input:focus,
+body.a11y-contrast .fruity select:focus,
+body.a11y-contrast .fruity textarea:focus,
+body.a11y-contrast .fruity [tabindex]:focus,
+body.a11y-contrast .fruity [role="button"]:focus,
+body.a11y-contrast .fruity [role="link"]:focus,
+body.a11y-contrast .fruity [role="tab"]:focus,
+body.a11y-contrast .fruity [role="menuitem"]:focus,
+body.a11y-contrast .fruity summary:focus,
+body.a11y-contrast .fruity input[type="radio"]:focus + label::before,
+body.a11y-contrast .fruity input[type="checkbox"]:focus + label::before,
+body.a11y-contrast .fruity #sidebar .tabbutton.btn-primary:focus {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(255, 191, 71, 0.32) !important;
+}
+
+
+/* =========================================================
+   RGAA 5 / WCAG 1.3.1 — Tableaux de questions et matrices
+   Complément visuel non intrusif pour les en-têtes de matrices normalisés en JS.
+========================================================= */
+.ls-a11y-array-caption {
+  caption-side: top !important;
+  text-align: left !important;
+}
+
+.sticky .ls-heading.stickyBar > th:first-child {
+  visibility: hidden;
+}
+
+table.ls-answers th[data-ls-a11y-array-header="row"],
+table.ls-answers th[data-ls-a11y-array-header="col"] {
+  font-weight: 700;
+}
+
+/* =========================================================
+   P2 — Reflow, zoom navigateur 200 % et espacement du texte
+   WCAG 1.4.4, 1.4.10, 1.4.12
+   Objectif : conserver les fonctions à 200 %, 320 px CSS et avec espacement texte renforcé.
+========================================================= */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+html,
+body,
+.fruity,
+#outerframeContainer,
+#main-content,
+.survey-body,
+.survey-question-container,
+.question-container,
+.answer-container,
+.group-container,
+.ls-answers,
+.form-group,
+.row,
+[class*="col-"] {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+#main-content,
+.question-container,
+.question-title-container,
+.question-text,
+.answer-container,
+.ls-questionhelp,
+.help-block,
+.completed-text,
+.survey-description,
+.group-description,
+.a11y-panel,
+.a11y-section,
+.a11y-option,
+.a11y-btn,
+.btn,
+label,
+legend,
+th,
+td {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe,
+object,
+embed {
+  max-width: 100%;
+}
+
+img,
+video,
+canvas {
+  height: auto;
+}
+
+.fruity .btn,
+.fruity button,
+.fruity .a11y-btn,
+.fruity .a11y-toggle,
+.fruity .a11y-option,
+.fruity .list-group-item,
+.fruity .navbar-brand,
+.fruity .nav-link,
+.fruity .dropdown-toggle,
+.fruity .ls-move-btn {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+}
+
+.fruity input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]),
+.fruity select,
+.fruity textarea,
+.fruity .form-control,
+.fruity .bootstrap-select,
+.fruity .bootstrap-select > .dropdown-toggle {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.fruity textarea,
+.fruity input[type="text"],
+.fruity input[type="email"],
+.fruity input[type="tel"],
+.fruity input[type="url"],
+.fruity input[type="number"],
+.fruity input[type="search"] {
+  width: 100%;
+}
+
+/* La barre doit rester utilisable avec zoom navigateur 200 % et viewport réduit. */
+.a11y-toolbar {
+  max-width: calc(100vw - 2rem);
+}
+
+.a11y-toggle {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.a11y-panel {
+  max-width: calc(100vw - 2rem);
+  max-height: min(82vh, calc(100vh - 6rem));
+  overflow: auto !important;
+  overscroll-behavior: contain;
+}
+
+.a11y-panel__header,
+.a11y-section__head,
+.a11y-inline-controls,
+.a11y-option {
+  min-width: 0;
+}
+
+.a11y-panel__header,
+.a11y-section__head {
+  flex-wrap: wrap;
+}
+
+.a11y-toggle-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr));
+}
+
+.a11y-inline-controls > * {
+  flex: 0 1 auto;
+}
+
+/* Espacement texte : valeurs de test WCAG 1.4.12 sans perte de contenu. */
+body.a11y-spacing {
+  line-height: 1.6 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+
+body.a11y-spacing p,
+body.a11y-spacing li,
+body.a11y-spacing label,
+body.a11y-spacing legend,
+body.a11y-spacing input,
+body.a11y-spacing textarea,
+body.a11y-spacing select,
+body.a11y-spacing button,
+body.a11y-spacing .btn,
+body.a11y-spacing .question-text-item,
+body.a11y-spacing .ls-questionhelp,
+body.a11y-spacing .help-block,
+body.a11y-spacing .question-title-container,
+body.a11y-spacing .answer-container,
+body.a11y-spacing .radio-list li,
+body.a11y-spacing .checkbox-item label,
+body.a11y-spacing .radio-item label,
+body.a11y-spacing .a11y-panel,
+body.a11y-spacing .a11y-section,
+body.a11y-spacing .a11y-option {
+  line-height: 1.6 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+
+body.a11y-spacing p,
+body.a11y-spacing .question-text,
+body.a11y-spacing .question-text-item,
+body.a11y-spacing .ls-questionhelp,
+body.a11y-spacing .help-block,
+body.a11y-spacing .group-description,
+body.a11y-spacing .survey-description {
+  margin-bottom: 2em !important;
+}
+
+body.a11y-spacing .question-container,
+body.a11y-spacing .form-group,
+body.a11y-spacing .a11y-section,
+body.a11y-spacing .answer-item,
+body.a11y-spacing .radio-item,
+body.a11y-spacing .checkbox-item {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Tableaux : pas de masquage ; défilement clavier si un tableau reste large. */
+.ls-table-wrapper,
+.table-responsive,
+.answer-container:has(table) {
+  max-width: 100%;
+}
+
+.ls-table-wrapper,
+.table-responsive,
+[data-ls-a11y-reflow-wrapper="1"] {
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable both-edges;
+}
+
+[data-ls-a11y-reflow-wrapper="1"]:focus,
+[data-ls-a11y-reflow-wrapper="1"]:focus-visible {
+  outline: 3px solid #005fcc !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 4px rgba(0, 95, 204, 0.22) !important;
+}
+
+body.a11y-contrast [data-ls-a11y-reflow-wrapper="1"]:focus,
+body.a11y-contrast [data-ls-a11y-reflow-wrapper="1"]:focus-visible {
+  outline-color: #ffbf47 !important;
+  box-shadow: 0 0 0 4px rgba(255, 191, 71, 0.32) !important;
+}
+
+table.ls-answers,
+.ls-table-wrapper table,
+.table-responsive table {
+  max-width: 100%;
+  table-layout: auto;
+}
+
+table.ls-answers th,
+table.ls-answers td,
+.ls-table-wrapper th,
+.ls-table-wrapper td {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  vertical-align: top;
+}
+
+/* Reflow des matrices à très faible largeur : une ligne devient une carte lisible. */
+@media (max-width: 480px) {
+  .a11y-toolbar {
+    left: .75rem;
+    right: .75rem;
+    bottom: .75rem;
+    max-width: calc(100vw - 1.5rem);
+  }
+
+  .a11y-panel {
+    width: 100%;
+    max-width: 100%;
+    max-height: min(78vh, calc(100vh - 5rem));
+    border-radius: 14px;
+  }
+
+  .a11y-panel__header,
+  .a11y-section__head {
+    gap: .6rem;
+  }
+
+  .a11y-panel__badge,
+  .a11y-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    flex-basis: 40px;
+  }
+
+  .a11y-inline-controls {
+    align-items: stretch;
+  }
+
+  .a11y-inline-controls .a11y-btn,
+  .a11y-inline-controls .a11y-value {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .fruity .container,
+  .fruity .container-fluid,
+  #outerframeContainer,
+  #main-content {
+    width: 100% !important;
+    padding-left: .75rem !important;
+    padding-right: .75rem !important;
+  }
+
+  .fruity .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .fruity [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"],
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] {
+    border: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] colgroup,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] colgroup {
+    display: none !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] thead,
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] tr.ls-heading,
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] tr.ls-heading-repeat,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] thead,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] tr.ls-heading,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] tr.ls-heading-repeat {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] tbody,
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] tr,
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] th,
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] tbody,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] tr,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] th,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] tbody tr,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] tbody tr {
+    margin: 0 0 1rem !important;
+    padding: .25rem !important;
+    border: 2px solid #d7dbe2 !important;
+    border-radius: .75rem !important;
+    background: #fff;
+  }
+
+  body.a11y-contrast .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] tbody tr,
+  body.a11y-contrast .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] tbody tr {
+    background: #000 !important;
+    border-color: #ffbf47 !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] th[data-ls-a11y-array-header="row"],
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] th[data-ls-a11y-array-header="row"] {
+    padding: .75rem !important;
+    border: 0 !important;
+    border-bottom: 1px solid #d7dbe2 !important;
+    background: #f5f7fa !important;
+  }
+
+  body.a11y-contrast .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] th[data-ls-a11y-array-header="row"],
+  body.a11y-contrast .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] th[data-ls-a11y-array-header="row"] {
+    background: #161616 !important;
+    color: #fff !important;
+    border-bottom-color: #ffbf47 !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell],
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] {
+    display: grid !important;
+    grid-template-columns: minmax(8rem, 42%) minmax(0, 1fr);
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem !important;
+    border: 0 !important;
+    border-top: 1px solid #edf0f3 !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell]::before,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell]::before {
+    content: attr(data-ls-a11y-col-label);
+    display: block;
+    font-weight: 700;
+    color: #253040;
+  }
+
+  body.a11y-contrast .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell]::before,
+  body.a11y-contrast .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell]::before {
+    color: #ffbf47 !important;
+  }
+
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] input,
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] select,
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] textarea,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] input,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] select,
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] textarea {
+    max-width: 100%;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 360px) {
+  .question-container table.ls-answers[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell],
+  .question-container .ls-table-wrapper table[data-ls-a11y-array-semantics="1"] td[data-ls-a11y-array-cell] {
+    grid-template-columns: 1fr;
+    gap: .35rem;
+  }
+
+  .a11y-panel__title,
+  .question-title-container,
+  legend {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* =========================================================
+   WCAG 4.1.3 — régions de statut centralisées
+   Une zone informative et une zone d’alerte évitent les aria-live concurrents.
+========================================================= */
+#ls-a11y-status,
+#ls-a11y-alert {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+
+/* =========================================================
+   Correctif post V250 — largeur, focus et listes obligatoires
+   ---------------------------------------------------------
+   Objectifs :
+   - retrouver une largeur proche de V225 pour les champs courts ;
+   - éviter le double contour bleu/orange sur les champs ;
+   - conserver le data-width="auto" des bootstrap-select avec recherche ;
+   - garder le reflow mobile sans perte de fonction.
+========================================================= */
+
+/* Largeur : les champs courts ne doivent pas être étirés inutilement sur desktop. */
+@media (min-width: 576px) {
+  .fruity .answer-container .text-short input[type="text"],
+  .fruity .answer-container input[type="text"].text,
+  .fruity .answer-container input[type="text"]:not(.form-control-date),
+  .fruity .answer-container input[type="email"],
+  .fruity .answer-container input[type="tel"],
+  .fruity .answer-container input[type="number"] {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  .fruity .answer-container textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* En mobile / zoom fort, les champs peuvent reprendre toute la largeur disponible. */
+@media (max-width: 575.98px) {
+  .fruity .answer-container input[type="text"],
+  .fruity .answer-container input[type="email"],
+  .fruity .answer-container input[type="tel"],
+  .fruity .answer-container input[type="number"],
+  .fruity .answer-container textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Bootstrap-select : respecter data-width="auto" lorsque LimeSurvey le demande. */
+.fruity .answer-container .bootstrap-select.form-control.list-question-select,
+.fruity .answer-container .dropdown.bootstrap-select.form-control.list-question-select {
+  height: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.fruity .answer-container .bootstrap-select.ls-a11y-bs-width-auto {
+  width: fit-content !important;
+  min-width: min(12rem, 100%) !important;
+  max-width: 100% !important;
+  display: inline-block !important;
+}
+
+.fruity .answer-container .bootstrap-select.ls-a11y-bs-width-auto > .dropdown-toggle {
+  width: 100% !important;
+  min-width: min(12rem, 100%) !important;
+  max-width: 100% !important;
+}
+
+.fruity .bootstrap-select > select.list-question-select,
+.fruity .bootstrap-select > select.show-tick[data-live-search],
+.fruity .bootstrap-select > select[data-live-search="true"] {
+  position: absolute !important;
+  width: 1px !important;
+  min-width: 1px !important;
+  max-width: 1px !important;
+  height: 1px !important;
+  min-height: 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+.fruity .answer-container .bootstrap-select.ls-a11y-bs-width-auto .filter-option,
+.fruity .answer-container .bootstrap-select.ls-a11y-bs-width-auto .filter-option-inner,
+.fruity .answer-container .bootstrap-select.ls-a11y-bs-width-auto .filter-option-inner-inner {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+@media (max-width: 575.98px) {
+  .fruity .answer-container .bootstrap-select.ls-a11y-bs-width-auto,
+  .fruity .answer-container .bootstrap-select.ls-a11y-bs-width-auto > .dropdown-toggle {
+    width: 100% !important;
+  }
+}
+
+/* Focus : un seul indicateur harmonisé, sans double entourage bleu/orange. */
+.fruity .answer-container .form-control:focus,
+.fruity .answer-container input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):focus,
+.fruity .answer-container select:focus,
+.fruity .answer-container textarea:focus,
+.fruity .answer-container .bootstrap-select > .dropdown-toggle:focus,
+.fruity .answer-container .bootstrap-select > .dropdown-toggle:focus-visible {
+  border-color: var(--ls-a11y-focus-color, #B33A00) !important;
+  outline: 3px solid var(--ls-a11y-focus-color, #B33A00) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+}
+
+body.a11y-contrast .fruity .answer-container .form-control:focus,
+body.a11y-contrast .fruity .answer-container input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):focus,
+body.a11y-contrast .fruity .answer-container select:focus,
+body.a11y-contrast .fruity .answer-container textarea:focus,
+body.a11y-contrast .fruity .answer-container .bootstrap-select > .dropdown-toggle:focus,
+body.a11y-contrast .fruity .answer-container .bootstrap-select > .dropdown-toggle:focus-visible {
+  border-color: #ffbf47 !important;
+  outline-color: #ffbf47 !important;
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   CORRECTIF V250-bis — largeur non full-width, validation list-dropdown,
+   et couleur de focus uniforme
+   Date : 2026-06-04
+
+   Objectif : revenir à une présentation proche de V225 sur desktop :
+   les champs simples ne prennent plus toute la largeur de la page.
+   En mobile / zoom fort, ils repassent en 100 % pour conserver le reflow.
+========================================================= */
+:root {
+  --ls-a11y-focus-color: #B33A00;
+  --ls-a11y-focus-shadow: rgba(179, 58, 0, 0.30);
+  --ls-a11y-focus-shadow-strong: rgba(179, 58, 0, 0.62);
+  --ls-a11y-field-max: 34rem;
+  --ls-a11y-field-short-max: 30rem;
+  --ls-a11y-field-long-max: 46rem;
+}
+
+@media (min-width: 769px) {
+  /* Les questions gardent une structure pleine largeur, mais pas les champs simples. */
+  .fruity .question-container:not(.array-flexible-row):not(.array-flexible-column):not(.array-flexible-dual-scale):not(.array-multi-flexi):not(.array-multi-flexi-text):not(.multiple-opt):not(.multiple-opt-comments) .answer-container .ls-answers.answer-item,
+  .fruity .question-container:not(.array-flexible-row):not(.array-flexible-column):not(.array-flexible-dual-scale):not(.array-multi-flexi):not(.array-multi-flexi-text):not(.multiple-opt):not(.multiple-opt-comments) .answer-container .answer-item {
+    width: auto !important;
+    max-width: var(--ls-a11y-field-max) !important;
+    flex: 0 1 var(--ls-a11y-field-max) !important;
+  }
+
+  .fruity .question-container:not(.array-flexible-row):not(.array-flexible-column):not(.array-flexible-dual-scale):not(.array-multi-flexi):not(.array-multi-flexi-text):not(.multiple-opt):not(.multiple-opt-comments) .answer-container input.form-control:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]),
+  .fruity .question-container:not(.array-flexible-row):not(.array-flexible-column):not(.array-flexible-dual-scale):not(.array-multi-flexi):not(.array-multi-flexi-text):not(.multiple-opt):not(.multiple-opt-comments) .answer-container select.form-control,
+  .fruity .question-container:not(.array-flexible-row):not(.array-flexible-column):not(.array-flexible-dual-scale):not(.array-multi-flexi):not(.array-multi-flexi-text):not(.multiple-opt):not(.multiple-opt-comments) .answer-container textarea.form-control {
+    width: 100% !important;
+    max-width: var(--ls-a11y-field-max) !important;
+  }
+
+  .fruity .text-short.question-container .answer-container input.form-control:not([type="hidden"]),
+  .fruity .short-free-text.question-container .answer-container input.form-control:not([type="hidden"]),
+  .fruity fieldset.text-short .answer-container input.form-control:not([type="hidden"]),
+  .fruity .question-container input[type="text"].form-control,
+  .fruity .question-container input[type="email"].form-control,
+  .fruity .question-container input[type="tel"].form-control {
+    max-width: var(--ls-a11y-field-short-max) !important;
+  }
+
+  .fruity .text-long.question-container .answer-container textarea.form-control,
+  .fruity fieldset.text-long .answer-container textarea.form-control,
+  .fruity .question-container textarea.form-control {
+    max-width: var(--ls-a11y-field-long-max) !important;
+  }
+
+  /* Bootstrap-select : l'inline style width:100% de LimeSurvey est neutralisé sur desktop. */
+  .fruity .list-dropdown .bootstrap-select,
+  .fruity .list-dropdown .dropdown.bootstrap-select,
+  .fruity fieldset.list-dropdown .bootstrap-select,
+  .fruity fieldset.list-dropdown .dropdown.bootstrap-select,
+  .fruity .list-question-select + .bootstrap-select,
+  .fruity select.list-question-select[data-live-search="true"] + .bootstrap-select,
+  .fruity .bootstrap-select.form-control.list-question-select {
+    width: auto !important;
+    min-width: min(22rem, 100%) !important;
+    max-width: min(var(--ls-a11y-field-max), 100%) !important;
+    display: inline-block !important;
+  }
+
+  .fruity .list-dropdown .bootstrap-select > .dropdown-toggle,
+  .fruity fieldset.list-dropdown .bootstrap-select > .dropdown-toggle {
+    width: 100% !important;
+    min-width: min(22rem, 100%) !important;
+    max-width: var(--ls-a11y-field-max) !important;
+  }
+
+  .fruity .list-dropdown .dropdown-menu {
+    min-width: min(22rem, calc(100vw - 2rem)) !important;
+    max-width: min(var(--ls-a11y-field-max), calc(100vw - 2rem)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .fruity .question-container .answer-container .ls-answers.answer-item,
+  .fruity .question-container .answer-container .answer-item,
+  .fruity .question-container .answer-container input.form-control:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]),
+  .fruity .question-container .answer-container select.form-control,
+  .fruity .question-container .answer-container textarea.form-control,
+  .fruity .question-container .bootstrap-select,
+  .fruity .question-container .bootstrap-select > .dropdown-toggle {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* Focus uniforme : suppression du bleu résiduel hors mode contraste. */
+body:not(.a11y-contrast) .fruity a:focus,
+body:not(.a11y-contrast) .fruity button:focus,
+body:not(.a11y-contrast) .fruity .btn:focus,
+body:not(.a11y-contrast) .fruity input:focus,
+body:not(.a11y-contrast) .fruity select:focus,
+body:not(.a11y-contrast) .fruity textarea:focus,
+body:not(.a11y-contrast) .fruity [tabindex]:focus,
+body:not(.a11y-contrast) .fruity [role="button"]:focus,
+body:not(.a11y-contrast) .fruity [role="link"]:focus,
+body:not(.a11y-contrast) .fruity [role="tab"]:focus,
+body:not(.a11y-contrast) .fruity [role="menuitem"]:focus,
+body:not(.a11y-contrast) .fruity [role="combobox"]:focus,
+body:not(.a11y-contrast) .fruity summary:focus,
+body:not(.a11y-contrast) .fruity a:focus-visible,
+body:not(.a11y-contrast) .fruity button:focus-visible,
+body:not(.a11y-contrast) .fruity .btn:focus-visible,
+body:not(.a11y-contrast) .fruity input:focus-visible,
+body:not(.a11y-contrast) .fruity select:focus-visible,
+body:not(.a11y-contrast) .fruity textarea:focus-visible,
+body:not(.a11y-contrast) .fruity [tabindex]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="button"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="link"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="tab"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="menuitem"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="combobox"]:focus-visible,
+body:not(.a11y-contrast) .fruity summary:focus-visible,
+body:not(.a11y-contrast) .fruity .bootstrap-select > .dropdown-toggle:focus,
+body:not(.a11y-contrast) .fruity .bootstrap-select > .dropdown-toggle:focus-visible,
+body:not(.a11y-contrast) .fruity #sidebar .tabbutton.btn-primary:focus,
+body:not(.a11y-contrast) .fruity #sidebar .tabbutton.btn-primary:focus-visible,
+body:not(.a11y-contrast) .fruity [data-ls-a11y-reflow-wrapper="1"]:focus,
+body:not(.a11y-contrast) .fruity [data-ls-a11y-reflow-wrapper="1"]:focus-visible,
+body:not(.a11y-contrast) .is-disabled-by-consent:focus,
+body:not(.a11y-contrast) #datasecurity_accepted:focus,
+body:not(.a11y-contrast) input[name="datasecurity_accepted"]:focus {
+  outline: 3px solid var(--ls-a11y-focus-color) !important;
+  outline-offset: 3px !important;
+  border-color: var(--ls-a11y-focus-color) !important;
+  box-shadow: 0 0 0 4px var(--ls-a11y-focus-shadow) !important;
+}
+
+body:not(.a11y-contrast) .fruity .form-control:focus,
+body:not(.a11y-contrast) .fruity .bootstrap-select > .dropdown-toggle:hover,
+body:not(.a11y-contrast) .fruity .bootstrap-select > .dropdown-toggle:focus,
+body:not(.a11y-contrast) .fruity .bootstrap-select > .dropdown-toggle:focus-visible,
+body:not(.a11y-contrast) .fruity .bootstrap-select.show > .dropdown-toggle {
+  border-color: var(--ls-a11y-focus-color) !important;
+  outline-color: var(--ls-a11y-focus-color) !important;
+  box-shadow: 0 0 0 4px var(--ls-a11y-focus-shadow) !important;
+}
+
+body:not(.a11y-contrast) .fruity .bootstrap-select .dropdown-menu li a:hover,
+body:not(.a11y-contrast) .fruity .bootstrap-select .dropdown-menu li a:focus,
+body:not(.a11y-contrast) .fruity .bootstrap-select .dropdown-menu .selected a,
+body:not(.a11y-contrast) .fruity .bootstrap-select .dropdown-menu .active a,
+body:not(.a11y-contrast) .fruity .dropdown-menu > .active > a,
+body:not(.a11y-contrast) .fruity .dropdown-menu > li > a:focus,
+body:not(.a11y-contrast) .fruity .dropdown-menu > li > a:hover {
+  background: #fff3ec !important;
+  color: #111111 !important;
+}
+
+body:not(.a11y-contrast) .fruity input[type="radio"]:focus + label::before,
+body:not(.a11y-contrast) .fruity input[type="checkbox"]:focus + label::before,
+body:not(.a11y-contrast) .fruity input[type="radio"]:focus-visible + label::before,
+body:not(.a11y-contrast) .fruity input[type="checkbox"]:focus-visible + label::before,
+body:not(.a11y-contrast) .fruity .radio-item input[type="radio"]:focus + label::before,
+body:not(.a11y-contrast) .fruity .checkbox-item input[type="checkbox"]:focus + label::before,
+body:not(.a11y-contrast) #datasecurity_accepted:focus + label::before,
+body:not(.a11y-contrast) input[name="datasecurity_accepted"]:focus + label::before {
+  outline: 3px solid var(--ls-a11y-focus-color) !important;
+  outline-offset: 4px !important;
+  border-color: var(--ls-a11y-focus-color) !important;
+  box-shadow: 0 0 0 4px var(--ls-a11y-focus-shadow) !important;
+}
+
+body:not(.a11y-contrast) .fruity input[type="radio"],
+body:not(.a11y-contrast) .fruity input[type="checkbox"] {
+  accent-color: #B33339;
+}
+
+/* État erreur des list-dropdown : le bouton visible reçoit aussi le rattachement aria. */
+.fruity .bootstrap-select > .dropdown-toggle[aria-invalid="true"],
+.fruity select[aria-invalid="true"] + .bootstrap-select > .dropdown-toggle,
+.fruity select[aria-invalid="true"] ~ .bootstrap-select > .dropdown-toggle {
+  border-color: #8a1c1c !important;
+  outline-color: #8a1c1c !important;
+}
+
+/* =========================================================
+   CORRECTIF V250-ter — marge des questions + panneau accessibilité 2 colonnes
+   Date : 2026-06-04
+
+   Objectifs :
+   - éviter que les blocs .question-container.row collent trop au bord gauche ;
+   - retrouver un panneau accessibilité confortable en 2 colonnes sur desktop ;
+   - conserver un affichage 1 colonne adapté mobile / zoom fort.
+========================================================= */
+:root {
+  --ls-a11y-question-side-gap: clamp(0.75rem, 1.6vw, 1.35rem);
+  --ls-a11y-question-inner-gap: clamp(0.35rem, 0.8vw, 0.75rem);
+  --ls-a11y-panel-desktop-width: min(720px, calc(100vw - 2rem));
+}
+
+/* Les questions LimeSurvey sont souvent des .row Bootstrap avec marges négatives.
+   On annule cet effet au niveau du bloc question, sans remettre les champs en full-width. */
+.fruity .question-container.row,
+.fruity fieldset.question-container.row,
+.fruity div.question-container.row,
+.fruity [id^="question"].question-container.row {
+  margin-left: var(--ls-a11y-question-side-gap) !important;
+  margin-right: var(--ls-a11y-question-side-gap) !important;
+  padding-left: var(--ls-a11y-question-inner-gap) !important;
+  padding-right: var(--ls-a11y-question-inner-gap) !important;
+  max-width: calc(100% - (var(--ls-a11y-question-side-gap) * 2)) !important;
+  box-sizing: border-box !important;
+}
+
+/* On conserve l'alignement interne des colonnes Bootstrap. */
+.fruity .question-container.row > .question-title-container,
+.fruity .question-container.row > .question-help-container,
+.fruity .question-container.row > .answer-container,
+.fruity .question-container.row > .question-valid-container {
+  min-width: 0;
+}
+
+/* Panneau accessibilité : 2 colonnes sur desktop/tablette large. */
+@media (min-width: 769px) {
+  .a11y-panel {
+    width: var(--ls-a11y-panel-desktop-width) !important;
+    max-width: calc(100vw - 2rem) !important;
+  }
+
+  .a11y-panel__body {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .85rem !important;
+    align-items: stretch !important;
+  }
+
+  .a11y-section {
+    min-width: 0 !important;
+    height: 100%;
+  }
+
+  .a11y-section[aria-labelledby="a11y-title-reset"] {
+    grid-column: 1 / -1;
+  }
+
+  .a11y-section[aria-labelledby="a11y-title-reset"] .a11y-btn--primary {
+    width: auto !important;
+    min-width: min(18rem, 100%);
+  }
+}
+
+/* Mobile, petit écran ou zoom fort : 1 colonne lisible et panneau contenu dans le viewport. */
+@media (max-width: 768px) {
+  :root {
+    --ls-a11y-question-side-gap: .45rem;
+    --ls-a11y-question-inner-gap: .35rem;
+  }
+
+  .fruity .question-container.row,
+  .fruity fieldset.question-container.row,
+  .fruity div.question-container.row,
+  .fruity [id^="question"].question-container.row {
+    max-width: calc(100% - (var(--ls-a11y-question-side-gap) * 2)) !important;
+  }
+
+  .a11y-panel {
+    width: min(100%, calc(100vw - 1.5rem)) !important;
+    max-width: calc(100vw - 1.5rem) !important;
+  }
+
+  .a11y-panel__body {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --ls-a11y-question-side-gap: .35rem;
+    --ls-a11y-question-inner-gap: .25rem;
+  }
+
+  .a11y-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* =========================================================
+   CORRECTIF V250-quater — mandatory checkbox + focus couleur unifiée
+   Date : 2026-06-04
+
+   Objectifs :
+   - faire correspondre la couleur du focus à la couleur des cases cochées ;
+   - supprimer les résidus bleus/oranges sur les checkboxes, radios et champs ;
+   - conserver le jaune du mode contraste.
+========================================================= */
+:root {
+  --ls-a11y-focus-color: #B33339;
+  --ls-a11y-focus-shadow: rgba(179, 51, 57, 0.24);
+}
+
+body:not(.a11y-contrast) .fruity a:focus,
+body:not(.a11y-contrast) .fruity button:focus,
+body:not(.a11y-contrast) .fruity .btn:focus,
+body:not(.a11y-contrast) .fruity input:focus,
+body:not(.a11y-contrast) .fruity select:focus,
+body:not(.a11y-contrast) .fruity textarea:focus,
+body:not(.a11y-contrast) .fruity [tabindex]:focus,
+body:not(.a11y-contrast) .fruity [role="button"]:focus,
+body:not(.a11y-contrast) .fruity [role="link"]:focus,
+body:not(.a11y-contrast) .fruity [role="tab"]:focus,
+body:not(.a11y-contrast) .fruity [role="menuitem"]:focus,
+body:not(.a11y-contrast) .fruity [role="combobox"]:focus,
+body:not(.a11y-contrast) .fruity summary:focus,
+body:not(.a11y-contrast) .fruity a:focus-visible,
+body:not(.a11y-contrast) .fruity button:focus-visible,
+body:not(.a11y-contrast) .fruity .btn:focus-visible,
+body:not(.a11y-contrast) .fruity input:focus-visible,
+body:not(.a11y-contrast) .fruity select:focus-visible,
+body:not(.a11y-contrast) .fruity textarea:focus-visible,
+body:not(.a11y-contrast) .fruity [tabindex]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="button"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="link"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="tab"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="menuitem"]:focus-visible,
+body:not(.a11y-contrast) .fruity [role="combobox"]:focus-visible,
+body:not(.a11y-contrast) .fruity summary:focus-visible,
+body:not(.a11y-contrast) .fruity .bootstrap-select > .dropdown-toggle:focus,
+body:not(.a11y-contrast) .fruity .bootstrap-select > .dropdown-toggle:focus-visible,
+body:not(.a11y-contrast) .fruity .answer-container .form-control:focus,
+body:not(.a11y-contrast) .fruity .answer-container input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]):focus,
+body:not(.a11y-contrast) .fruity .answer-container select:focus,
+body:not(.a11y-contrast) .fruity .answer-container textarea:focus,
+body:not(.a11y-contrast) .fruity .answer-container .bootstrap-select > .dropdown-toggle:focus,
+body:not(.a11y-contrast) .fruity .answer-container .bootstrap-select > .dropdown-toggle:focus-visible,
+body:not(.a11y-contrast) #datasecurity_accepted:focus,
+body:not(.a11y-contrast) input[name="datasecurity_accepted"]:focus {
+  outline: 3px solid #B33339 !important;
+  outline-offset: 3px !important;
+  border-color: #B33339 !important;
+  box-shadow: 0 0 0 4px rgba(179, 51, 57, 0.24) !important;
+}
+
+body:not(.a11y-contrast) .fruity input[type="radio"],
+body:not(.a11y-contrast) .fruity input[type="checkbox"] {
+  accent-color: #B33339 !important;
+}
+
+body:not(.a11y-contrast) .fruity input[type="checkbox"]:checked + label::before,
+body:not(.a11y-contrast) .fruity input[type="radio"]:checked + label::before,
+body:not(.a11y-contrast) .fruity .checkbox-item input[type="checkbox"]:checked + label::before,
+body:not(.a11y-contrast) .fruity .radio-item input[type="radio"]:checked + label::before {
+  border-color: #B33339 !important;
+  background-color: #B33339 !important;
+}
+
+body:not(.a11y-contrast) .fruity input[type="radio"]:focus + label,
+body:not(.a11y-contrast) .fruity input[type="checkbox"]:focus + label,
+body:not(.a11y-contrast) .fruity input[type="radio"]:focus-visible + label,
+body:not(.a11y-contrast) .fruity input[type="checkbox"]:focus-visible + label {
+  color: inherit !important;
+  text-decoration-color: #B33339 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+body:not(.a11y-contrast) .fruity input[type="radio"]:focus + label::before,
+body:not(.a11y-contrast) .fruity input[type="checkbox"]:focus + label::before,
+body:not(.a11y-contrast) .fruity input[type="radio"]:focus-visible + label::before,
+body:not(.a11y-contrast) .fruity input[type="checkbox"]:focus-visible + label::before,
+body:not(.a11y-contrast) .fruity .radio-item input[type="radio"]:focus + label::before,
+body:not(.a11y-contrast) .fruity .checkbox-item input[type="checkbox"]:focus + label::before,
+body:not(.a11y-contrast) #datasecurity_accepted:focus + label::before,
+body:not(.a11y-contrast) input[name="datasecurity_accepted"]:focus + label::before {
+  outline: 3px solid #B33339 !important;
+  outline-offset: 4px !important;
+  border-color: #B33339 !important;
+  box-shadow: 0 0 0 4px rgba(179, 51, 57, 0.24) !important;
+}
+
+body:not(.a11y-contrast) .fruity .ls-radio-focus,
+body:not(.a11y-contrast) .fruity .checkbox-list li.ls-radio-focus,
+body:not(.a11y-contrast) .fruity .radio-list li.ls-radio-focus,
+body:not(.a11y-contrast) .fruity td.ls-radio-focus,
+body:not(.a11y-contrast) .fruity tr.ls-radio-focus {
+  outline-color: #B33339 !important;
+  border-color: #B33339 !important;
+  box-shadow: 0 0 0 3px rgba(179, 51, 57, 0.18) !important;
+}
+
+/* Erreur : on garde une couleur dédiée sombre, différente du simple focus. */
+.fruity input[aria-invalid="true"],
+.fruity select[aria-invalid="true"],
+.fruity textarea[aria-invalid="true"],
+.fruity .bootstrap-select > .dropdown-toggle[aria-invalid="true"] {
+  border-color: #8a1c1c !important;
+}
+
+/* RGAA 10.8 / WCAG 1.4.12 : garde-fous du mode espacement, independants des variations Fruity. */
+body.a11y-spacing .fruity .navbar,
+body.a11y-spacing .fruity .navbar-nav,
+body.a11y-spacing .fruity .nav,
+body.a11y-spacing .fruity .breadcrumb,
+body.a11y-spacing .fruity .answers-list,
+body.a11y-spacing .fruity .radio-list,
+body.a11y-spacing .fruity .checkbox-list,
+body.a11y-spacing .fruity .list-unstyled,
+body.a11y-spacing .fruity .a11y-panel__header,
+body.a11y-spacing .fruity .a11y-panel__titlewrap,
+body.a11y-spacing .fruity .a11y-section,
+body.a11y-spacing .fruity .answer-container,
+body.a11y-spacing .fruity .answer-item {
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  row-gap: .5rem !important;
+}
+
+body.a11y-spacing .fruity .nav-link,
+body.a11y-spacing .fruity .dropdown-item,
+body.a11y-spacing .fruity .breadcrumb,
+body.a11y-spacing .fruity .breadcrumb li,
+body.a11y-spacing .fruity .btn,
+body.a11y-spacing .fruity button,
+body.a11y-spacing .fruity label,
+body.a11y-spacing .fruity legend,
+body.a11y-spacing .fruity .a11y-toggle,
+body.a11y-spacing .fruity .a11y-option,
+body.a11y-spacing .fruity .question-title-container,
+body.a11y-spacing .fruity .question-text,
+body.a11y-spacing .fruity .group-title,
+body.a11y-spacing .fruity .group-description,
+body.a11y-spacing .fruity .ls-questionhelp,
+body.a11y-spacing .fruity .help-block {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+body.a11y-spacing .fruity .btn,
+body.a11y-spacing .fruity button,
+body.a11y-spacing .fruity .nav-link,
+body.a11y-spacing .fruity .dropdown-item,
+body.a11y-spacing .fruity .a11y-toggle,
+body.a11y-spacing .fruity .a11y-option,
+body.a11y-spacing .fruity .form-control,
+body.a11y-spacing .fruity .bootstrap-select > .dropdown-toggle {
+  height: auto !important;
+  min-height: 44px !important;
+}
+
+body.a11y-spacing .fruity input,
+body.a11y-spacing .fruity select,
+body.a11y-spacing .fruity textarea,
+body.a11y-spacing .fruity .bootstrap-select,
+body.a11y-spacing .fruity .bootstrap-select > .dropdown-toggle {
+  max-width: 100% !important;
+}
+
+/* RGAA 13.9 / WCAG 1.4.10 : reflow des pages hors questionnaire. */
+body[data-ls-a11y-static-page="1"] #main-content,
+body[data-ls-a11y-static-page="1"] #main-content * {
+  box-sizing: border-box;
+}
+
+body[data-ls-a11y-static-page="1"] #main-content {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+body[data-ls-a11y-static-page="1"] #main-content [data-ls-a11y-static-section],
+body[data-ls-a11y-static-page="1"] #main-content .container,
+body[data-ls-a11y-static-page="1"] #main-content .container-fluid,
+body[data-ls-a11y-static-page="1"] #main-content .row,
+body[data-ls-a11y-static-page="1"] #main-content .card,
+body[data-ls-a11y-static-page="1"] #main-content .well,
+body[data-ls-a11y-static-page="1"] #main-content .panel,
+body[data-ls-a11y-static-page="1"] #main-content .list-group,
+body[data-ls-a11y-static-page="1"] #main-content .survey-list,
+body[data-ls-a11y-static-page="1"] #main-content .list-surveys {
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+body[data-ls-a11y-static-page="1"] #main-content .row,
+body[data-ls-a11y-static-page="1"] #main-content .survey-list,
+body[data-ls-a11y-static-page="1"] #main-content .list-surveys,
+body[data-ls-a11y-static-page="1"] #main-content .list-group {
+  flex-wrap: wrap !important;
+}
+
+body[data-ls-a11y-static-page="1"] #main-content [class*="col-"] {
+  min-width: 0 !important;
+}
+
+body[data-ls-a11y-static-page="1"] #main-content [data-ls-a11y-static-media] {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+body[data-ls-a11y-static-page="1"] #main-content pre,
+body[data-ls-a11y-static-page="1"] #main-content code,
+body[data-ls-a11y-static-page="1"] #main-content .well,
+body[data-ls-a11y-static-page="1"] #main-content .panel,
+body[data-ls-a11y-static-page="1"] #main-content .card,
+body[data-ls-a11y-static-page="1"] #main-content .list-group-item,
+body[data-ls-a11y-static-page="1"] #main-content .btn,
+body[data-ls-a11y-static-page="1"] #main-content button,
+body[data-ls-a11y-static-page="1"] #main-content a {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+body[data-ls-a11y-static-page="1"] #main-content .btn,
+body[data-ls-a11y-static-page="1"] #main-content button,
+body[data-ls-a11y-static-page="1"] #main-content input,
+body[data-ls-a11y-static-page="1"] #main-content select,
+body[data-ls-a11y-static-page="1"] #main-content textarea {
+  max-width: 100% !important;
+}
+
+.ls-a11y-static-table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ls-a11y-static-table-wrapper:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(0, 95, 204, 0.22);
+}
+
+.ls-a11y-static-table-wrapper > table {
+  width: max-content;
+  min-width: 100%;
+}
+
+/* RGAA 13.7 / WCAG 2.2.1 : avertissement accessible avant expiration de session. */
+.ls-a11y-session-timeout[hidden] {
+  display: none !important;
+}
+
+.ls-a11y-session-timeout {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.ls-a11y-session-timeout__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+}
+
+.ls-a11y-session-timeout__panel {
+  position: relative;
+  width: min(100%, 34rem);
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  padding: 1.5rem;
+  border: 2px solid #35363f;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f2933;
+  box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, .28);
+}
+
+.ls-a11y-session-timeout__panel h2 {
+  margin-top: 0;
+  margin-bottom: .75rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.ls-a11y-session-timeout__panel p {
+  margin-bottom: .85rem;
+}
+
+.ls-a11y-session-timeout__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.ls-a11y-session-timeout__actions .btn {
+  min-height: 44px;
+}
+
+body.a11y-contrast .ls-a11y-session-timeout__panel {
+  border-color: #fff !important;
+  background: #000 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 480px) {
+  .ls-a11y-session-timeout {
+    align-items: flex-end;
+    padding: .75rem;
+  }
+
+  .ls-a11y-session-timeout__panel,
+  .ls-a11y-session-timeout__actions .btn {
+    width: 100%;
+  }
+}
+
+/* RGAA 10.7 / WCAG 2.3.3 : respecter la preference systeme de reduction des animations. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

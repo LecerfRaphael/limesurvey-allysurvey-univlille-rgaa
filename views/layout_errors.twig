@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ aSurveyInfo.languagecode|default('fr') }}" dir="{{ aSurveyInfo.dir|default('ltr') }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ gT('Error') }}</title>
+</head>
+<body>
+  <main class="container" role="main">
+    <h1>{{ gT('Error') }}</h1>
+    {% if aSurveyInfo.aError.title is defined %}
+      <h2>{{ aSurveyInfo.aError.title }}</h2>
+    {% endif %}
+    {% if aSurveyInfo.aError.message is defined %}
+      <div>{{ aSurveyInfo.aError.message }}</div>
+    {% endif %}
+  </main>
+</body>
+</html>

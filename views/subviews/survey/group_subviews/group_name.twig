@@ -1,0 +1,6 @@
+{# Présentation du nom du groupe : conservée en legend pour la structure LimeSurvey. #}
+{% if aGroup.showgroupinfo == 'N' or aGroup.showgroupinfo == 'B' %}
+    <legend class="{{ aSurveyInfo.class.grouptitle }} text-center h3 space-col" {{ aSurveyInfo.attr.grouptitle }}>
+        {{ processString(aGroup.name) }}
+    </legend>
+{% endif %}

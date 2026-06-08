@@ -1,0 +1,135 @@
+{#
+    Group container personnalisé RGAA / WCAG
+
+    Objectif :
+    - H1 visible : Titre du questionnaire | Page X / Y
+    - Nom du groupe conservé en dessous via group_name.twig (<legend class="group-title">...)
+    - Calcul Page X / Y indépendant de l'affichage de l'index des questions, avec correction currentstep zéro-indexé.
+
+    Correction d'affichage :
+    - un seul élément racine reprend aSurveyInfo.class.groupcontainer ;
+    - le <h1> et le <fieldset> sont regroupés dans ce conteneur ;
+    - cela évite que .group-outer-container (display:flex) place le H1 à gauche et le formulaire à droite.
+    - aucun filtre Twig non autorisé n'est utilisé.
+#}
+
+{# --- Nom du groupe courant --- #}
+{% set __gname = aGroup.name is defined ?processString(aGroup.name, 1)|trim : (aGroup.group_name is defined ?aGroup.group_name|trim : '') %}
+
+{# --- Identifiant du groupe courant --- #}
+{% set __firstQ = (aGroup.aQuestions is defined and aGroup.aQuestions|length) ?(aGroup.aQuestions|first) : null %}
+{% set __gid = aGroup.gid is defined ?aGroup.gid : (aGroup.group_id is defined ?aGroup.group_id : (__firstQ and __firstQ.gid is defined ?__firstQ.gid : (__firstQ and __firstQ.group_id is defined ?__firstQ.group_id : ''))) %}
+
+{# --- Titre du questionnaire --- #}
+{% set __surveyTitle = aSurveyInfo.surveyls_title is defined ?processString(aSurveyInfo.surveyls_title, 1)|trim : (aSurveyInfo.name is defined ?processString(aSurveyInfo.name, 1)|trim : '') %}
+
+{# --- Source LimeSurvey de secours : progression native du questionnaire --- #}
+{# Important : avec une page d'accueil activée, LimeSurvey peut exposer currentstep=1
+   dès le premier groupe. On ne doit donc pas ajouter +1 automatiquement.
+   La source prioritaire reste la carte réelle des groupes ci-dessous. #}
+{% set __progressCurrentRaw = (aSurveyInfo.progress is defined and aSurveyInfo.progress.currentstep is defined) ?intval(aSurveyInfo.progress.currentstep) : -1 %}
+{% set __progressCurrent = __progressCurrentRaw > 0 ?__progressCurrentRaw : (__progressCurrentRaw == 0 ?1 : 0) %}
+{% set __progressTotal = (aSurveyInfo.progress is defined and aSurveyInfo.progress.total is defined) ?intval(aSurveyInfo.progress.total) : 0 %}
+
+{# --- Fallback : liste des groupes si la progression n'est pas disponible --- #}
+{% set __groups = [] %}
+{% if aSurveyInfo.aQuestionGroups is defined and aSurveyInfo.aQuestionGroups|length > 0 %}
+    {% set __groups = aSurveyInfo.aQuestionGroups %}
+{% elseif aSurveyInfo.aGroups is defined and aSurveyInfo.aGroups|length > 0 %}
+    {% set __groups = aSurveyInfo.aGroups %}
+{% elseif aSurveyInfo.groupList is defined and aSurveyInfo.groupList|length > 0 %}
+    {% set __groups = aSurveyInfo.groupList %}
+{% endif %}
+{% set __groupsTotal = __groups|length %}
+
+{# --- Sécurité importante --- #}
+{# Selon les versions/configurations LimeSurvey, aSurveyInfo.aQuestionGroups peut contenir
+   uniquement le groupe courant. Dans ce cas, __groupsTotal vaut 1 même si le
+   questionnaire contient 3 groupes : il ne faut donc PAS utiliser cette liste
+   comme total réel. On ne fait confiance à la carte des groupes que si elle
+   contient au moins 2 entrées. Sinon, la progression native LimeSurvey reste
+   la source fiable pour obtenir 1 / 3, 2 / 3, 3 / 3. #}
+{% set __hasFullGroupMap = __groupsTotal > 1 %}
+
+{# --- Total réel RGAA --- #}
+{# Cas attendus :
+   - 3 groupes et aQuestionGroups ne contient que le groupe courant : progressTotal=3, groupsTotal=1 => total=3.
+   - carte complète disponible : groupsTotal=3. Si progressTotal vaut 4 parce que
+     LimeSurvey compte l'étape finale, on garde bien 3 pages de groupes. #}
+{% set __mapTotal = __hasFullGroupMap ?__groupsTotal : 0 %}
+{% set __total = __mapTotal > 1 ?__mapTotal : __progressTotal %}
+
+{# --- Page courante : GID du groupe uniquement si la carte des groupes est complète --- #}
+{% set __current = 0 %}
+{% if __gid is not empty and __hasFullGroupMap %}
+    {% for __g in __groups %}
+        {% set __gFirstQ = (__g.aQuestions is defined and __g.aQuestions|length) ?(__g.aQuestions|first) : null %}
+        {% set __gGid = __g.gid is defined ?__g.gid : (__g.group_id is defined ?__g.group_id : (__gFirstQ and __gFirstQ.gid is defined ?__gFirstQ.gid : (__gFirstQ and __gFirstQ.group_id is defined ?__gFirstQ.group_id : ''))) %}
+        {% if __gGid == __gid %}
+            {% set __current = loop.index %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% if __current == 0 %}
+    {% set __current = __progressCurrent > 0 ?__progressCurrent : 1 %}
+{% endif %}
+
+{# --- Sécurité : uniquement en fallback, sans transformer 3 groupes en Page 4 / 4 --- #}
+{% if __total == 0 %}
+    {% set __total = __current %}
+{% endif %}
+
+<div class="{{ aSurveyInfo.class.groupcontainer }} ls-a11y-group-container-wrapper" {{ aSurveyInfo.attr.groupcontainer }}>
+
+    <div id="ls-group-header"
+         class="ls-a11y-group-header text-center mb-3"
+         data-gid="{{ __gid }}"
+         data-current="{{ __current }}"
+         data-total="{{ __total }}"
+         data-groups-total="{{ __groupsTotal }}"
+         data-progress-current="{{ __progressCurrent }}"
+         data-progress-current-raw="{{ __progressCurrentRaw }}"
+         data-progress-total="{{ __progressTotal }}">
+
+        <span class="ls-a11y-group-name-source d-none" aria-hidden="true">{{ __gname }}</span>
+        <span class="ls-a11y-survey-title-source d-none" aria-hidden="true">{{ __surveyTitle }}</span>
+
+        <div class="ls-a11y-group-map d-none" aria-hidden="true" data-map-complete="{{ __hasFullGroupMap ?'1' : '0' }}">
+            {% if __hasFullGroupMap %}
+            {% for __g in __groups %}
+                {% set __gFirstQ = (__g.aQuestions is defined and __g.aQuestions|length) ?(__g.aQuestions|first) : null %}
+                {% set __gGid = __g.gid is defined ?__g.gid : (__g.group_id is defined ?__g.group_id : (__gFirstQ and __gFirstQ.gid is defined ?__gFirstQ.gid : (__gFirstQ and __gFirstQ.group_id is defined ?__gFirstQ.group_id : ''))) %}
+                {% set __gName = __g.name is defined ?processString(__g.name, 1)|trim : (__g.group_name is defined ?__g.group_name|trim : '') %}
+                <span class="ls-a11y-group-map-item" data-index="{{ loop.index }}" data-gid="{{ __gGid }}">{{ __gName }}</span>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <h1 class="ls-a11y-page-title text-center mb-3" id="ls-page-title">
+            {{ __surveyTitle }}
+            <span class="ls-a11y-page-number"> | Page {{ __current }}{% if __total > 0 %} / {{ __total }}{% endif %}</span>
+        </h1>
+    </div>
+
+    <fieldset class="ls-a11y-group-fieldset space-col">
+
+        <sup class="text-danger fa fa-asterisk small" aria-hidden="true"></sup> :
+        <span class="text-danger">question obligatoire</span>
+
+        {{ include('./subviews/survey/group_subviews/group_name.twig') }}
+        {{ include('./subviews/survey/group_subviews/group_desc.twig') }}
+
+        {% for aQuestion in aGroup.aQuestions %}
+            {{ include('./subviews/survey/question_container.twig') }}
+        {% endfor %}
+
+        {% if aGroup.show_last_group == true %}
+            <input type='hidden' name='lastgroup' value='{{ aGroup.lastgroup }}' id='lastgroup' />
+        {% endif %}
+        {% if aGroup.show_last_answer == true %}
+            <input type='hidden' name='lastanswer' value='{{ aGroup.lastanswer }}' id='lastanswer' />
+        {% endif %}
+
+    </fieldset>
+
+</div>
