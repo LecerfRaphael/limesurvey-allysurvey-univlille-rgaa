@@ -247,6 +247,16 @@
     });
   }
 
+  function syncDataSecurityStateFrom(consent) {
+    if (!consent) return;
+
+    var form = consent.closest('form');
+    if (!form) return;
+
+    if (consent.checked) clearDataSecurityError(form, consent);
+    setDataSecurityButtonsState(form);
+  }
+
   function clearDataSecurityError(form, consent) {
     if (!form) return;
 
@@ -303,9 +313,25 @@
         var target = event.target;
         if (!target || !target.matches('input[type="checkbox"][name="datasecurity_accepted"]')) return;
 
-        clearDataSecurityError(form, target);
-        setDataSecurityButtonsState(form);
+        syncDataSecurityStateFrom(target);
       });
+
+      form.addEventListener('input', function (event) {
+        var target = event.target;
+        if (!target || !target.matches('input[type="checkbox"][name="datasecurity_accepted"]')) return;
+
+        syncDataSecurityStateFrom(target);
+      });
+
+      form.addEventListener('click', function (event) {
+        var target = event.target;
+        if (!target || !target.closest) return;
+        if (!target.closest('.card-footer, .modal-footer, [id^="data-security-modal-"]')) return;
+
+        window.setTimeout(function () {
+          syncDataSecurityStateFrom(getDataSecurityConsent(form));
+        }, 0);
+      }, true);
 
       form.addEventListener('click', function (event) {
         var btn = event.target && event.target.closest('button[type="submit"], input[type="submit"], .ls-move-next-btn, .ls-move-submit-btn');

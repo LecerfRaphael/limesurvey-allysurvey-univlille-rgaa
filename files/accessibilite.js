@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
   PACK LIME SURVEY COMPLET / NETTOYÉ (version fichier externe)
    - Gestion dates (jour/mois/année + input caché)
    - Placeholders Jour/Mois/Année
