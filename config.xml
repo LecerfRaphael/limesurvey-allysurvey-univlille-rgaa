@@ -10,10 +10,10 @@
 <config>
     <!-- Those metadata are displayed in the theme configuration page.  -->
     <metadata>
-        <name>RGAA-V276-UnivLille-AllySurvey</name>
+        <name>RGAA-V276b-UnivLille-AllySurvey</name>
         <title>Thème Accessibilité DAWAM V276</title>
         <type>theme</type>
-        <creationDate>2026-04-03 07:46</creationDate>
+        <creationDate>2026-04-06 07:46</creationDate>
         <author>2844</author>
         <authorEmail>support-limesurvey@univ-lille.fr</authorEmail>
         <authorUrl>http://www.univ-lille.fr</authorUrl>
@@ -24,7 +24,7 @@
         <description twig="on"><![CDATA[Thème LimeSurvey basé sur Vanilla, adapté pour améliorer l’accessibilité numérique et la conformité au RGAA 4.
 En amélioration continue par la Direction du numérique – Service DAWAM de l’Université de Lille.
 📧 Contact : raphael.lecerf@univ-lille.fr]]></description>
-        <lastUpdate>2026-06-05 14:55:00</lastUpdate>
+        <lastUpdate>2026-07-06 11:36:45</lastUpdate>
         <extends>vanilla</extends>
     </metadata>
 

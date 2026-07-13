@@ -643,7 +643,7 @@
 
   function initDateTriplets(root) {
     (root || document).querySelectorAll(".question-container").forEach(function (q) {
-      var hiddenDate = q.querySelector(".ls-js-hidden input[type='date'][id^='answer']");
+      var hiddenDate = q.querySelector(".ls-js-hidden input[id^='answer']");
       var day = q.querySelector("select.day");
       var month = q.querySelector("select.month");
       var year = q.querySelector("select.year");
@@ -659,11 +659,33 @@
       hiddenDate.setAttribute("aria-hidden", "true");
       hiddenDate.disabled = true;
 
+      [day, month, year].forEach(function (el) {
+        if (!el) return;
+        if (q.classList.contains("mandatory")) el.setAttribute("required", "required");
+        if (hiddenDate.getAttribute("aria-describedby")) {
+          el.setAttribute("aria-describedby", hiddenDate.getAttribute("aria-describedby"));
+        }
+      });
+
+      function dateFormat() {
+        var basename = hiddenDate.id ?hiddenDate.id.replace(/^answer/, "") : "";
+        var node = basename ?document.getElementById("dateformat" + basename) : null;
+        var value = node ?(node.value || node.textContent || "") : "";
+        return String(value || "").toUpperCase();
+      }
+
       function updateHidden() {
         var dd = day.value,
           mm = month.value,
           yyyy = year.value;
-        hiddenDate.value = dd && mm && yyyy ?yyyy + "-" + mm + "-" + dd : "";
+        if (!dd || !mm || !yyyy) {
+          hiddenDate.value = "";
+          return;
+        }
+
+        hiddenDate.value = dateFormat().indexOf("DD/MM/YYYY") !== -1 ?
+          dd + "/" + mm + "/" + yyyy :
+          yyyy + "-" + mm + "-" + dd;
       }
 
       [day, month, year].forEach(function (el) {
@@ -1112,16 +1134,92 @@
      5) Cacher pickers calendrier GUI natifs
   ========================================================= */
   function hideNativePickers(root) {
-    (root || document).querySelectorAll(".input-group-addon").forEach(function (div) {
+    root = root || document;
+
+    root.querySelectorAll("input[type='date'][id^='answer']").forEach(function (input) {
+      var group = input.closest(".date-timepicker-group, [id$='_datetimepicker']");
+      if (!group || group.getAttribute("data-ls-a11y-native-date-only") === "1") return;
+
+      group.setAttribute("data-ls-a11y-native-date-only", "1");
+
+      if (window.jQuery) {
+        var $input = window.jQuery(input);
+        var $group = window.jQuery(group);
+
+        try {
+          if ($input.data("datepicker")) $input.datepicker("destroy");
+        } catch (e) {}
+        try {
+          if ($input.data("DateTimePicker")) $input.datetimepicker("destroy");
+        } catch (e2) {}
+        try {
+          if ($group.data("DateTimePicker")) $group.datetimepicker("destroy");
+        } catch (e3) {}
+      }
+    });
+
+    root.querySelectorAll(".input-group-addon").forEach(function (div) {
       var calendarIcon = div.querySelector("i.fa-calendar");
       if (calendarIcon) div.style.display = "none";
     });
-    (root || document).querySelectorAll(".tempus-dominus-widget").forEach(function (div) {
+    root.querySelectorAll(".tempus-dominus-widget").forEach(function (div) {
       div.style.display = "none";
     });
-    (root || document).querySelectorAll(".date-container").forEach(function (div) {
+    root.querySelectorAll(".date-container").forEach(function (div) {
       div.style.display = "none";
     });
+  }
+
+  function suppressLegacyDatePopups() {
+    if (window.__LS_A11Y_DATE_POPUP_SUPPRESSED__) return;
+    if (typeof window.doPopupDate !== "function") return;
+
+    window.__LS_A11Y_DATE_POPUP_SUPPRESSED__ = true;
+    var nativeDoPopupDate = window.doPopupDate;
+
+    window.doPopupDate = function (qid) {
+      var question = document.getElementById("question" + qid);
+      if (question && question.querySelector(".date-timepicker-group")) {
+        hideNativePickers(question);
+        return;
+      }
+
+      return nativeDoPopupDate.apply(this, arguments);
+    };
+  }
+
+  function initDatePickerCleanup(root) {
+    hideNativePickers(root || document);
+    suppressLegacyDatePopups();
+
+    window.setTimeout(function () {
+      hideNativePickers(document);
+      suppressLegacyDatePopups();
+    }, 0);
+    window.setTimeout(function () {
+      hideNativePickers(document);
+      suppressLegacyDatePopups();
+    }, 150);
+    window.setTimeout(function () {
+      hideNativePickers(document);
+      suppressLegacyDatePopups();
+    }, 600);
+
+    if (window.__LS_A11Y_DATE_PICKER_CLEANUP_OBSERVER__ || typeof MutationObserver === "undefined") return;
+    window.__LS_A11Y_DATE_PICKER_CLEANUP_OBSERVER__ = true;
+
+    new MutationObserver(function (mutations) {
+      var shouldClean = mutations.some(function (mutation) {
+        return Array.prototype.slice.call(mutation.addedNodes || []).some(function (node) {
+          return node.nodeType === 1 && (
+            (node.matches && node.matches(".tempus-dominus-widget, .date-container, .input-group-addon")) ||
+            (node.querySelector && node.querySelector(".tempus-dominus-widget, .date-container, .input-group-addon"))
+          );
+        });
+      });
+
+      if (shouldClean) hideNativePickers(document);
+    }).observe(document.documentElement, { childList: true, subtree: true });
   }
 
   /* =========================================================
@@ -4579,7 +4677,7 @@ function initBootstrapSelectKeyboardFix() {
 
     runA11yModule("reflow-focus-selects", root, function (scope) {
       initReflowZoomSupport(scope);
-      hideNativePickers(scope);
+      initDatePickerCleanup(scope);
       forceNativeSelectAccessibility(scope);
       initBootstrapSelectKeyboardFix();
       initAriaLiveSubmitMessage();

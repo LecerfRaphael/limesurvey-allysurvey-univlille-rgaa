@@ -365,7 +365,10 @@
     if (label.querySelector('.text-danger')) return;
 
     label.classList.add("fw-bold");
-    label.innerHTML = 'JE VALIDE <span class="text-danger" aria-hidden="true">*</span> <span class="sr-only">champ obligatoire</span>';
+    if (!label.textContent.replace(/\s+/g, " ").trim()) {
+      label.appendChild(document.createTextNode("JE VALIDE"));
+    }
+    label.insertAdjacentHTML("beforeend", ' <span class="text-danger" aria-hidden="true">*</span> <span class="sr-only">champ obligatoire</span>');
   }
 
   if (document.readyState === "loading") {

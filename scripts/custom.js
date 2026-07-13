@@ -180,6 +180,54 @@
     return form && form.querySelector('input[type="checkbox"][name="datasecurity_accepted"]');
   }
 
+  function isVisible(node) {
+    if (!node) return false;
+    var style = window.getComputedStyle(node);
+    return style.display !== 'none' && style.visibility !== 'hidden' && style.visibility !== 'collapse';
+  }
+
+  function ensureDataSecurityCollapse(scope) {
+    var root = scope || document;
+
+    Array.prototype.slice.call(root.querySelectorAll('input[type="checkbox"][name="datasecurity_accepted"]')).forEach(function (consent) {
+      var container = consent.closest('.privacy, .datasecurity, [class*="privacy"], [id*="datasec"], [id*="privacy"]') ||
+        consent.closest('form');
+      if (!container || container.getAttribute('data-ls-a11y-privacy-collapse') === '1') return;
+
+      var panel = container.querySelector('.collapse:not(.navbar-collapse), [id*="datasec"][class*="collapse"], [id*="privacy"][class*="collapse"]');
+      if (!panel || panel.contains(consent)) return;
+
+      var panelId = panel.id || normaliseA11yIdPart('privacy-policy-' + ensureA11yControlId(consent, 'datasecurity-accepted'));
+      panel.id = panelId;
+
+      var existingTrigger = container.querySelector('[data-bs-toggle="collapse"][href="#' + panelId + '"], [data-bs-toggle="collapse"][data-bs-target="#' + panelId + '"], [aria-controls="' + panelId + '"]');
+      if (existingTrigger && isVisible(existingTrigger)) return;
+
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn btn-outline-secondary mb-3 ls-a11y-privacy-toggle';
+      button.setAttribute('aria-controls', panelId);
+      button.setAttribute('aria-expanded', panel.classList.contains('show') ? 'true' : 'false');
+      button.textContent = panel.classList.contains('show') ?
+        'Masquer la politique de confidentialité' :
+        'Afficher la politique de confidentialité';
+
+      button.addEventListener('click', function () {
+        var isOpen = panel.classList.toggle('show');
+        panel.hidden = false;
+        panel.style.display = '';
+        button.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        button.textContent = isOpen ?
+          'Masquer la politique de confidentialité' :
+          'Afficher la politique de confidentialité';
+      });
+
+      panel.hidden = false;
+      container.insertBefore(button, panel);
+      container.setAttribute('data-ls-a11y-privacy-collapse', '1');
+    });
+  }
+
   function getSubmitButtons(form) {
     if (!form) return [];
     return Array.prototype.slice.call(
@@ -239,6 +287,7 @@
 
   function bindDataSecurityGuard(scope) {
     var root = scope || document;
+    ensureDataSecurityCollapse(root);
 
     root.querySelectorAll('form').forEach(function (form) {
       var consent = getDataSecurityConsent(form);

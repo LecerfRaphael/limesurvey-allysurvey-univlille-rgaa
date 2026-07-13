@@ -22,6 +22,7 @@
 
 {# --- Titre du questionnaire --- #}
 {% set __surveyTitle = aSurveyInfo.surveyls_title is defined ?processString(aSurveyInfo.surveyls_title, 1)|trim : (aSurveyInfo.name is defined ?processString(aSurveyInfo.name, 1)|trim : '') %}
+{% set __isAllInOne = aSurveyInfo.format is defined and aSurveyInfo.format == 'A' %}
 
 {# --- Source LimeSurvey de secours : progression native du questionnaire --- #}
 {# Important : avec une page d'accueil activée, LimeSurvey peut exposer currentstep=1
@@ -81,6 +82,7 @@
 
 <div class="{{ aSurveyInfo.class.groupcontainer }} ls-a11y-group-container-wrapper" {{ aSurveyInfo.attr.groupcontainer }}>
 
+    {% if not __isAllInOne %}
     <div id="ls-group-header"
          class="ls-a11y-group-header text-center mb-3"
          data-gid="{{ __gid }}"
@@ -110,6 +112,7 @@
             <span class="ls-a11y-page-number"> | Page {{ __current }}{% if __total > 0 %} / {{ __total }}{% endif %}</span>
         </h1>
     </div>
+    {% endif %}
 
     <fieldset class="ls-a11y-group-fieldset space-col">
 
