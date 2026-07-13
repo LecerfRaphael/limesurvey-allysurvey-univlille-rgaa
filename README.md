@@ -3,7 +3,7 @@
   Université de Lille • Direction du numérique — Service DAWAM<br>
   Thème LimeSurvey accessible RGAA/WCAG • Version 2.76+<br>
   Compatible LimeSurvey 6.x — testé notamment avec 6.3.9+231211 et 6.15.22+251103<br>
-  Dernière mise à jour documentaire : 08/06/2026
+  Dernière mise à jour documentaire : 07/07/2026
 </p>
 
 <p align="center">
